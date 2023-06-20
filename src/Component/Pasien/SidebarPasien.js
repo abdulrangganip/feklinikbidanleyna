@@ -24,7 +24,7 @@ const SidebarPasien = ({ children }) => {
       icon: <BsReverseLayoutTextSidebarReverse />,
       path: "/profile",
     },
-    { title: "Cek RME", icon: <AiOutlineBarChart />, path: "/cek-rme" },
+    { title: "Data Pasien", icon: <AiOutlineBarChart />, path: "/cek-rme" },
     {
       title: "Reservasi Kunjungan",
       icon: <AiOutlineMail />,
