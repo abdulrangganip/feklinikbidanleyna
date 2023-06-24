@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../../Component/Navbar";
-import SidebarPasien from "../../Component/Pasien/SidebarPasien";
+import SidebarPasien from "../../Component/Admin/SidebarAdminn";
+import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 
 function TabelDataKehamilan() {
   const [tableHeader, setTableHeader] = useState();
@@ -46,7 +47,7 @@ function TabelDataKehamilan() {
       "TINGGI BADAN",
     ];
     contentCatatanKehamilan = [
-      "2 Juli 2023",
+      "2 Juli 2021",
       "Mual Mual",
       "33 Minggu",
       "29 Cm",
@@ -59,8 +60,8 @@ function TabelDataKehamilan() {
       "2 Agustus 2023",
       "-",
       "100/70",
-      "2 Juli 2023",
-      "2 Juli 2023",
+      "2 Juli 2021",
+      "2 Juli 2021",
       "60",
       "165",
     ];
@@ -83,8 +84,8 @@ function TabelDataKehamilan() {
       "JARAK KEHAMILAN",
     ];
     contentCatatanKehamilan = [
-      "13 Mei 2021",
-      "20 Februari 2023",
+      "13 Mei 2022",
+      "20 Februari 2022",
       "-",
       "-",
       "-",
@@ -112,7 +113,7 @@ function TabelDataKehamilan() {
       "KONDISI IBU",
     ];
     contentCatatanKehamilan = [
-      "10 November 2028",
+      "10 November 2018",
       "Bidan",
       "9 Bulan",
       "Normal",
@@ -133,7 +134,7 @@ function TabelDataKehamilan() {
       "RENCANA TRANSPORTASI",
     ];
     contentCatatanKehamilan = [
-      "20 Agustus 2023",
+      "20 Agustus 2021",
       "Bidan",
       "Suami",
       "Suami",
@@ -160,17 +161,17 @@ function TabelDataKehamilan() {
       "ALAMAT BERSALIN",
     ];
     contentCatatanKehamilan = [
-      "24 Maret 2023",
+      "24 Maret 2021",
       "23.00",
-      "25 Maret 2023",
+      "25 Maret 2021",
       "03.00",
-      "25 Maret 2023",
+      "25 Maret 2021",
       "05.00",
-      "4500 Gram",
-      "55 Cm",
+      "2500 Gram",
+      "30 Cm",
       "10",
       "Laki-Laki",
-      "25 Maret 2023",
+      "25 Maret 2021",
       "05.15",
       "Praktik Bidan Mandiri Leyna Merlina Sarkosi",
       "Bidan",
@@ -182,37 +183,38 @@ function TabelDataKehamilan() {
   return (
     <div className="card bg-slate-500">
       <Navbar />
-      <SidebarPasien>
+      <SidebarAdminn>
+        <button className="btn btn-success">TAMBAH</button>
         <div className="card w-auto mx-auto bg-white">
           <div className="mt-10 p-4">
             <p className="text-lg font-bold">Data Kehamilan</p>
             <div className="flex flex-row justify-center">
               <button
-                className="bg-slate-200 border border-black"
+                className="bg-slate-200 border border-black py-2 px-4 mt-4 rounded-md hover:bg-slate-300"
                 onClick={handlerInitiate1}
               >
                 CATATAN KEHAMILAN
               </button>
               <button
-                className="bg-slate-200 border border-black"
+                className="bg-slate-200 border border-black py-2 px-4 mt-4 rounded-md hover:bg-slate-300"
                 onClick={handlerInitiate2}
               >
                 KEHAMILAN SEKARANG
               </button>
               <button
-                className="bg-slate-200 border border-black"
+                className="bg-slate-200 border border-black py-2 px-4 mt-4 rounded-md hover:bg-slate-300"
                 onClick={handlerInitiate3}
               >
                 KEHAMILAN SEBELUMNYA
               </button>
               <button
-                className="bg-slate-200 border border-black"
+                className="bg-slate-200 border border-black py-2 px-4 mt-4 rounded-md hover:bg-slate-300"
                 onClick={handlerInitiate4}
               >
                 RENCANA PERSALINAN
               </button>
               <button
-                className="bg-slate-200 border border-black"
+                className="bg-slate-200 border border-black py-2 px-4 mt-4 rounded-md hover:bg-slate-300"
                 onClick={handlerInitiate5}
               >
                 PERSALINAN
@@ -240,7 +242,7 @@ function TabelDataKehamilan() {
             </div>
           </div>
         </div>
-      </SidebarPasien>
+      </SidebarAdminn>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "../../Component/Navbar";
-import SidebarPasien from "../../Component/Pasien/SidebarPasien";
-import TabelDataIbu from "../../Component/Pasien/TabelDataIbu";
-import TabelDataKeluarga from "../../Component/Pasien/TabelDataKeluarga";
-import JadwalDataLayanan from "../../Component/Pasien/JadwalDataLayanan";
+import SidebarPasien from "../../Component/Admin/SidebarAdminn";
+import TabelDataIbu from "../../Component/Admin/TabelDataIbu";
+import TabelDataKeluarga from "../../Component/Admin/TabelDataKeluarga";
+import JadwalDataLayanan from "../../Component/Admin/JadwalDataLayanan";
 
 const JadwalLayanan = () => {
   return (

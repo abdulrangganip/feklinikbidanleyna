@@ -1,15 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import DashboardAdmin from "./Pages/Admin/DashboardAdmin";
-import DashboardPasien from "./Pages/Pasien/DashboardPasien";
-import Cekrme from "./Pages/Pasien/Cekrme";
-import Reservasi from "./Pages/Pasien/Reservasi";
-import JadwalLayanan from "./Pages/Pasien/JadwalLayanan";
+import DashboardAdmin from "./Pages/Pasien/DashboardAdmin";
+import DashboardPasien from "./Pages/Admin/DashboardAdminn";
+import Cekrme from "./Pages/Admin/DataPasien";
+import Reservasi from "./Pages/Admin/Bidan";
+import JadwalLayanan from "./Pages/Admin/JadwalLayanan";
 import Login from "./Pages/Login";
-import TabelDataKehamilan from "./Pages/Pasien/TabelDataKehamilan";
-import TabelDataKB from "./Pages/Pasien/TabelDataKB";
-import TabelDataImunisasi from "./Pages/Pasien/TabelDataImunisasi";
+import TabelDataKehamilan from "./Pages/Admin/TabelDataKehamilan";
+import TabelDataKB from "./Pages/Admin/TabelDataKB";
+import TabelDataImunisasi from "./Pages/Admin/TabelDataImunisasi";
 import Register from "./Pages/Register";
+import DashboardAdminn from "./Pages/Admin/DashboardAdminn";
+import DataPasien from "./Pages/Admin/DataPasien";
+import Bidan from "./Pages/Admin/Bidan";
 
 const App = () => {
   return (
@@ -19,17 +22,17 @@ const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard-admin" element={<DashboardAdmin />} />
-        <Route path="/profile" element={<DashboardPasien />} />
-        <Route path="/cek-rme" element={<Cekrme />} />
-        <Route path="/reservasi-kunjungan" element={<Reservasi />} />
+        <Route path="/Dashboard" element={<DashboardAdminn />} />
+        <Route path="/data-pasien" element={<DataPasien />} />
+        <Route path="/bidan" element={<Bidan />} />
         <Route path="/jadwal-pelayanan" element={<JadwalLayanan />} />
         <Route
-          path="/cek-rme/data-kehamilan"
+          path="/data-pasien/data-kehamilan"
           element={<TabelDataKehamilan />}
         />
-        <Route path="/cek-rme/data-kb" element={<TabelDataKB />} />
+        <Route path="/data-pasien/data-kb" element={<TabelDataKB />} />
         <Route
-          path="/cek-rme/data-imunisasi"
+          path="/data-pasien/data-imunisasi"
           element={<TabelDataImunisasi />}
         />
 

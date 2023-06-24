@@ -7,49 +7,59 @@ const TabelDataAnak = () => {
         <tbody>
           <tr>
             <td>
-              <label className="font-bold">NAMA SUAMI</label>
+              <label className="font-bold">NO RM</label>
             </td>
             <td>
-              <label>98277632423</label>
+              <label>99-86-33</label>
             </td>
             <td>
-              <label className="font-bold">PENDIDIKAN SUAMI</label>
+              <label className="font-bold">GOLONGAN DARAH</label>
             </td>
             <td>
-              <label>98277632423</label>
+              <label>O</label>
             </td>
           </tr>
           <tr>
             <td>
-              <label className="font-bold">UMUR SUAMI</label>
+              <label className="font-bold">NAMA LENGKAP</label>
             </td>
             <td>
-              <label>Abdul Rangga</label>
+              <label>Devasha Rizki</label>
             </td>
             <td>
-              <label className="font-bold">PEKERJAAN SUAMI</label>
+              <label className="font-bold">NO NIK</label>
             </td>
-            <td>penyakit hati</td>
+            <td>3273160811010066</td>
           </tr>
           <tr>
             <td>
-              <label className="font-bold">TEMPAT LAHIR SUAMI</label>
+              <label className="font-bold">TEMPAT LAHIR</label>
             </td>
-            <td>Bandung</td>
+            <td>Garut</td>
             <td>
-              <label className="font-bold">GOLONGAN DARAH SUAMI</label>
+              <label className="font-bold">NO KK</label>
             </td>
-            <td>Gatal gatal</td>
+            <td>3213819488110366</td>
           </tr>
           <tr>
             <td>
-              <label className="font-bold">TANGGAL LAHIR SUAMI</label>
+              <label className="font-bold">TANGGAL LAHIR </label>
             </td>
-            <td>12-12-1999</td>
+            <td>18 April 2022</td>
             <td>
-              <label className="font-bold">JUMLAH ANAK</label>
+              <label className="font-bold">JENIS KELAMIN</label>
             </td>
-            <td>Mahasiswa</td>
+            <td>Perempuan</td>
+          </tr>
+          <tr>
+            <td>
+              <label className="font-bold">AGAMA SUAMI</label>
+            </td>
+            <td>21</td>
+            <td>
+              <label className="font-bold">UMUR ANAK TERAKHIR</label>
+            </td>
+            <td>Diploma</td>
           </tr>
           <tr>
             <td>
@@ -67,7 +77,7 @@ const TabelDataAnak = () => {
       <div className="card grid grid-cols-2 gap-x-3">
         <div className="card-body bg-white flex flex-row gap-x-3 rounded-lg">
           <p className="p-3">Imunisasi</p>
-          <Link to="/cek-rme/data-imunisasi">
+          <Link to="/data-pasien/data-imunisasi">
             <div className="btn btn-success">LIHAT</div>
           </Link>
         </div>

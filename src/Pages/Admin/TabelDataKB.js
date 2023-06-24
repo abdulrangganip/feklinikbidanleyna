@@ -1,56 +1,75 @@
 import React, { useState } from "react";
 import Navbar from "../../Component/Navbar";
-import SidebarPasien from "../../Component/Pasien/SidebarPasien";
+import SidebarPasien from "../../Component/Admin/SidebarAdminn";
+import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 
-function TabelDataImunisasi() {
+function TabelDataKB() {
   const [tableHeader, setTableHeader] = useState();
   const [initiateTable, setInitiateTable] = useState(1);
-  let headerCatatanKehamilan;
-  let contentCatatanKehamilan;
+  let headerDataKB;
+  let contentDataKB;
 
   const handlerInitiate1 = () => {
     setInitiateTable(1);
   };
+  // const handlerInitiate2 = () => {
+  //   setInitiateTable(2);
+  // };
+  // const handlerInitiate3 = () => {
+  //   setInitiateTable(3);
+  // };
+  // const handlerInitiate4 = () => {
+  //   setInitiateTable(4);
+  // };
+  // const handlerInitiate5 = () => {
+  //   setInitiateTable(5);
+  // };
 
   if (initiateTable === 1) {
-    headerCatatanKehamilan = [
-      "JENIS KELAMIN ",
-      "TANGGAL PEMBERIAN",
-      "JENIS IMUNISASI",
+    headerDataKB = [
+      "METODE KB",
+      "DIAGNOSA",
+      "TINDAKAN",
+      "KELUHAN",
+      "TANGGAL DATANG",
+      "TANGGAL KEMBALI",
+      "CATATAN",
       "TEKANAN DARAH",
       "KELUHAN PASIEN",
-      "TANGGAL DATANG",
       "TANGGAL DILAYANI",
       "BERAT BADAN",
-      "TINGGI",
+      "TINGGI BADAN",
     ];
-    contentCatatanKehamilan = [
-      "Laki-Laki",
-      "12 Juni 2023",
-      "DPT HB",
+    contentDataKB = [
+      "KB suntik 3 bulan",
+      "Mual Mual",
+      "-",
+      "-",
+      "6 Oktober 2022",
+      "10 November 2022",
+      "-",
       "100/70",
       "-",
-      "12 Juni 2023",
-      "12 Juni 2023",
-      "45 kg",
-      "140 cm",
+      "-6 Oktober 2022",
+      "50",
+      "160 cm",
     ];
   }
-
   return (
     <div className="card bg-slate-500">
       <Navbar />
-      <SidebarPasien>
+      <SidebarAdminn>
+        <button className="btn btn-success">TAMBAH</button>
         <div className="card w-auto mx-auto bg-white">
           <div className="mt-10 p-4">
-            <p className="text-lg font-bold">Data Imunisasi</p>
+            <p className="text-lg font-bold">Data Keluarga Berencana</p>
             <div className="flex flex-row justify-center"></div>
             <div className="overflow-x-auto w-[73rem] mx-auto">
               <table className="table table-zebra border">
                 {/* head */}
                 <thead>
                   <tr>
-                    {headerCatatanKehamilan.map((item) => (
+                    {headerDataKB.map((item) => (
                       <th>{item}</th>
                     ))}
                   </tr>
@@ -58,7 +77,7 @@ function TabelDataImunisasi() {
                 <tbody>
                   {/* row 1 */}
                   <tr>
-                    {contentCatatanKehamilan.map((item) => (
+                    {contentDataKB.map((item) => (
                       <td>{item}</td>
                     ))}
                   </tr>
@@ -67,9 +86,9 @@ function TabelDataImunisasi() {
             </div>
           </div>
         </div>
-      </SidebarPasien>
+      </SidebarAdminn>
     </div>
   );
 }
 
-export default TabelDataImunisasi;
+export default TabelDataKB;

@@ -1,6 +1,25 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const TabelDataKeluarga = () => {
+  const [dataBody, setDataBody] = useState("");
+  console.log("data keluarga", dataBody);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/posts/1`
+        ); // Replace with your API endpoint
+        console.log("cek data", response.data);
+        setDataBody(response.data.body); // Store the fetched data in state
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
       <table className="table">
@@ -67,13 +86,13 @@ const TabelDataKeluarga = () => {
       <div className="card grid grid-cols-2 gap-x-3">
         <div className="card-body bg-white flex flex-row gap-x-3 rounded-lg">
           <p className="p-3">Keluarga Berencana</p>
-          <Link to="/cek-rme/data-kb">
+          <Link to="/data-pasien/data-kb">
             <div className="btn btn-success">LIHAT</div>
           </Link>
         </div>
         <div className="card-body bg-white flex flex-row gap-x-3 rounded-lg">
           <p className="p-3">Kehamilan dan Melahirkan</p>
-          <Link to="/cek-rme/data-kehamilan">
+          <Link to="/data-pasien/data-kehamilan">
             <div className="btn btn-success">LIHAT</div>
           </Link>
         </div>

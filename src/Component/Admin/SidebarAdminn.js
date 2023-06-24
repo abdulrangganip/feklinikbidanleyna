@@ -15,26 +15,26 @@ import { RiDashboardFill } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const SidebarPasien = ({ children }) => {
+const SidebarAdminn = ({ children }) => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const Menus = [
     {
-      title: "Profile",
+      title: "Dashboard",
       icon: <BsReverseLayoutTextSidebarReverse />,
-      path: "/profile",
+      path: "/dashboard",
     },
-    { title: "Data Pasien", icon: <AiOutlineBarChart />, path: "/cek-rme" },
+    { title: "Data Pasien", icon: <AiOutlineBarChart />, path: "/data-pasien" },
     {
-      title: "Reservasi Kunjungan",
-      icon: <AiOutlineMail />,
-      path: "/reservasi-kunjungan",
-    },
-    {
-      title: "Jadwal Pelayanan",
+      title: "Bidan",
       icon: <BsPerson />,
-      path: "/jadwal-pelayanan",
+      path: "/bidan",
     },
+    // {
+    //   title: "Jadwal Pelayanan",
+    //   icon: <AiOutlineMail />,
+    //   path: "/jadwal-pelayanan",
+    // },
   ];
 
   return (
@@ -61,7 +61,7 @@ const SidebarPasien = ({ children }) => {
             className={`text-black origin-left font-medium text-2xl 
             duration-300 ${!open && "scale-0"}`}
           >
-            Pasien
+            ADMIN
           </h1>
         </div>
 
@@ -117,4 +117,4 @@ const SidebarPasien = ({ children }) => {
   );
 };
 
-export default SidebarPasien;
+export default SidebarAdminn;
