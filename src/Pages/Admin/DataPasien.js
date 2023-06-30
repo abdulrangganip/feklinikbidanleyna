@@ -1,70 +1,78 @@
-import React, { useState } from "react";
-import Navbar from "../../Component/Navbar";
-import SidebarPasien from "../../Component/Admin/SidebarAdminn";
-import TabelDataIbu from "../../Component/Admin/TabelDataIbu";
-import TabelDataAnak from "../../Component/Admin/TabelDataAnak";
-import TabelDataKeluarga from "../../Component/Admin/TabelDataKeluarga";
+import { Link } from "react-router-dom";
 import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
+import Navbar from "../../Component/Navbar";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const DataPasien = () => {
-  const [nik, setNik] = useState("");
-  const [showIbuComponent, setShowIbuComponent] = useState(false);
+  const [listPasien, setLIstPasien] = useState([""]);
 
-  console.log("nik", nik);
+  useEffect(() => {
+    const getListPasien = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/getpasien`);
+        setLIstPasien(response.data.data);
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
 
-  const handleCek = () => {
-    if (nik === "ibu") {
-      setShowIbuComponent(true);
-    } else {
-      setShowIbuComponent(false);
-    }
-  };
+    getListPasien();
+  }, []);
 
   return (
     <div className="bg-slate-500">
       <Navbar />
       <SidebarAdminn>
-        <div className="flex flex-col gap-y-3">
-          <p className="font-bold text-2xl text-white p-3">Data Pasien</p>
-          <div className="card bg-white w-full">
-            <div className="card-body flex flex-row">
-              <label className="pt-3">NIK</label>
-              <input
-                type="text"
-                placeholder="Masukan NIK anda"
-                value={nik}
-                onChange={(e) => setNik(e.target.value)}
-                className="input input-bordered w-full max-w-2xl"
-              />
-              <button className="btn btn-primary" onClick={handleCek}>
-                Cek
-              </button>
+        <div className="card bg-white">
+          <div className="card-body p-5">
+            <div className="flex gap-x-3">
+              <Link to="/create-data-ibu">
+                <button className="btn btn-primary">Create Data Ibu</button>
+              </Link>
+              <Link to="/create-data-anak">
+                <button className="btn btn-primary">Create Data Anak</button>
+              </Link>
             </div>
-            {showIbuComponent ? (
-              <div className="flex flex-col p-5 gap-y-9">
-                <div>
-                  <p className="font-bold text-center">Data Diri Ibu</p>
-                  <hr />
-                  <TabelDataIbu />
-                </div>
-                <div>
-                  <p className="font-bold text-center">Data Diri Keluarga</p>
-                  <hr />
-                  <TabelDataKeluarga />
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-col p-5 gap-y-3">
-                <p className="font-bold text-center">Data Diri Anak</p>
-                <hr />
-                <TabelDataAnak />
-              </div>
-            )}
+            <table className="table">
+              <tbody>
+                <tr>
+                  <td>No</td>
+                  <td>Nama Lengkap</td>
+                  <td>No RME</td>
+                  <td>No NIK</td>
+                  <td>No KK</td>
+                  <td>Aksi</td>
+                </tr>
+                {listPasien.map((pasien, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{pasien.NAMA_LENGKAP}</td>
+                    <td>{pasien.NO_RME}</td>
+                    <td>{pasien.NO_KK}</td>
+                    <td>{pasien.NO_NIK}</td>
+                    <td>
+                      <div>
+                        <Link className="mr-3" to="/data-pasien">
+                          <button navigate className="btn btn-warning">
+                            Detail
+                          </button>
+                        </Link>
+                        <Link to="/data-pasien">
+                          <button navigate className="btn btn-error">
+                            Hapus
+                          </button>
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </SidebarAdminn>
     </div>
   );
 };
-
 export default DataPasien;

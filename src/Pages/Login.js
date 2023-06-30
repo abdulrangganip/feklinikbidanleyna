@@ -1,4 +1,40 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const { tipe_user } = data;
+
+        if (tipe_user === "admin") {
+          // Redirect ke halaman dashboard admin
+          navigate("/dashboard");
+        } else if (tipe_user === "bidan") {
+          // Redirect ke halaman dashboard bidan
+          navigate("/dashboardBidan");
+        }
+      } else {
+        // Login gagal, tangani kesalahan
+        console.log("Login failed");
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row gap-x-5">
@@ -27,6 +63,8 @@ const Login = () => {
                 type="text"
                 placeholder="username"
                 className="input input-bordered"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="form-control">
@@ -34,9 +72,11 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label className="label flex flex-row-reverse">
                 {/* <a
@@ -49,7 +89,12 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <a className="w-full max-w-2xl" href="/dashboard">
-                <button className="btn w-full bg-orange-500">Login</button>
+                <button
+                  onClick={handleLogin}
+                  className="btn w-full bg-orange-500"
+                >
+                  Login
+                </button>
               </a>
 
               {/* <p className="text-center">Belum punya akun?</p>
