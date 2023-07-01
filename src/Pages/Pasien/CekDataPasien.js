@@ -100,7 +100,7 @@ const CekDataPasien = () => {
               </div>
               <div className="grid grid-cols-2">
                 <label className="font-bold">TEMPAT LAHIR SUAMI</label>
-                <label className="input input-info">TANGGAL LAHIR SUAMI</label>
+                <label className="input input-info">BANDUNG</label>
               </div>
 
               <div className="grid grid-cols-2">
@@ -142,12 +142,12 @@ const CekDataPasien = () => {
         </div>
         <div className="mt-4">
           <button class="btn btn-wide mr-3">
-            <Link to="/data-pasien/data-kehamilan">
+            <Link to="/cek-data-pasien/data-kehamilan-pasien">
               KEHAMILAN DAN MELAHIRKAN
             </Link>
           </button>
           <button class="btn btn-wide">
-            <Link to="/data-pasien/data-kb">KELUARGA BERENCANA</Link>
+            <Link to="/cek-data-pasien/data-kb-pasien">KELUARGA BERENCANA</Link>
           </button>
         </div>
       </SidebarPasien>
