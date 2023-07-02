@@ -59,12 +59,12 @@ const DataPasienBidan = () => {
                     <td>{pasien.NO_NIK}</td>
                     <td>
                       <div>
-                        <Link className="mr-3" to="/cek-data-pasien">
+                        <Link className="mr-3" to="/input-kehamilan">
                           <button navigate className="btn btn-warning">
                             Detail
                           </button>
                         </Link>
-                        <Link to="/data-pasien">
+                        <Link to="/input-imunisasi">
                           <button navigate className="btn btn-error">
                             Hapus
                           </button>
