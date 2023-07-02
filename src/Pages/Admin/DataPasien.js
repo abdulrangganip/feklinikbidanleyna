@@ -53,8 +53,15 @@ const DataPasien = () => {
                     <td>{pasien.NO_NIK}</td>
                     <td>
                       <div>
-                        <Link className="mr-3" to="/data-pasien">
-                          <button navigate className="btn btn-warning">
+                        <Link className="mr-3" to="/CekDataPasien">
+                          <button
+                            navigate
+                            className="btn btn-warning"
+                            onClick={() => {
+                              const pasienId = pasien.ID_PASIEN;
+                              console.log(pasienId);
+                            }}
+                          >
                             Detail
                           </button>
                         </Link>
