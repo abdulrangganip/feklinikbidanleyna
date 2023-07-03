@@ -25,6 +25,19 @@ const DataPasien = (props) => {
     }
   };
 
+  const [listDataAgama, setListDataAgama] = useState(null);
+  const getListAgama = async () => {
+    try {
+      const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getagama`);
+      const data = response.data?.data;
+
+      setListDataAgama(data);
+      console.log(data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
   const [detailPasien, setDetailPasien] = useState();
   const getListPasien = async (id) => {
     try {
@@ -33,10 +46,6 @@ const DataPasien = (props) => {
 
       const currentDate = moment();
       data[0].UMUR = currentDate.diff(moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD"), "year");
-
-      console.log("LAHIR: ", data[0].TANGGAL_LAHIR);
-      console.log("AYEUNA: ", currentDate);
-      console.log("UMUR: ", currentDate.diff(moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD")));
       setDetailPasien(data);
     } catch (error) {
       console.log("Error:", error);
@@ -45,6 +54,7 @@ const DataPasien = (props) => {
 
   useEffect(() => {
     console.log(location);
+    getListAgama();
     getListPasien(location?.state?.id_pasien);
   }, [location]);
 
@@ -124,7 +134,9 @@ const DataPasien = (props) => {
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">AGAMA </label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].AGAMA : "-"}</label>
+                {console.log("AGAMA: ", detailPasien && detailPasien[0].ID_AGAMA)}
+                {console.log("LIST AGAMA: ", listDataAgama)}
+                <label className="input input-info">{detailPasien ? (listDataAgama ? listDataAgama[detailPasien[0].ID_AGAMA - 1].NAMA : "-") : "-"}</label>
               </div>
             </div>
 
