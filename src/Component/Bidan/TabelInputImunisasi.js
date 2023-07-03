@@ -9,7 +9,9 @@ const TabelInputImunisasi = () => {
       <Navbar />
       <SidebarBidan>
         <div className="card bg-white my-5">
-          <p className="font-bold text-xl text-center py-4">IMUNISASI</p>
+          <p className="font-bold text-xl text-center py-4">
+            IMUNIdsadasdasSASI
+          </p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">

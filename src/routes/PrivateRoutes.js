@@ -100,6 +100,18 @@ const PrivateRoutes = () => {
           <Route path="/dashboard" element={<DashboardPasien />} />
           <Route path="/cek-data-pasien" element={<CekDataPasien />} />
           <Route path="/cek-data-pasien-anak" element={<CekDataPasienAnak />} />
+          <Route
+            path="/cek-data-pasien/data-kb-pasien"
+            element={<TabelDataKBPasien />}
+          />
+          <Route
+            path="/cek-data-pasien/data-kehamilan-pasien"
+            element={<TabelDataKehamilanPasien />}
+          />
+          <Route
+            path="/cek-data-pasien/data-imunisasi-pasien"
+            element={<TabelDataImunisasiPasien />}
+          />
         </>
       ) : (
         // TODO:: need to replace this with error page such as 404 or else
