@@ -1,35 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
+import Navbar from "../../Component/Navbar";
 
 const FormReservasi = () => {
-  const [nip, setNip] = useState("");
+  const navigate = useNavigate();
+
+  // const [nip, setNip] = useState("");
   const [nama, setNama] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [alamat, setAlamat] = useState("");
-  const [noTelp, setNoTelp] = useState("");
+  // const [alamat, setAlamat] = useState("");
+  // const [noTelp, setNoTelp] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleValue = (setValue, e) => {
+    setValue(e.target.value);
+  };
+  const postFormReservasi = async (data) => {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/signup", {
-        username: nip,
-        nama: nama,
-        email: email,
-        password: password,
-        // alamat,
-        no_telp: noTelp,
-        tipe_user: "bidan",
-      });
-
-      console.log(response.data);
-
-      // Lakukan tindakan setelah berhasil mendaftar, seperti menampilkan notifikasi atau mengarahkan pengguna ke halaman lain
+      const response = await axios.post(
+        `https://82de-180-244-138-171.ngrok-free.app/api/addbidan`,
+        data
+      );
+      console.log(response);
+      alert("Akun Bidan Berhasil Dibuat");
+      navigate("/data-bidan");
     } catch (error) {
-      console.log("Error:", error);
+      alert(`Buat Akun Gagal!`);
     }
   };
+
+  const handleSimpan = () => {
+    let body = {};
+    body.nama = nama;
+    body.username = username;
+    body.email = email;
+    body.password = password;
+    postFormReservasi(body);
+  };
+
+  useEffect(() => {
+    console.log();
+  });
 
   return (
     <div className="card bg-white">
@@ -37,67 +51,74 @@ const FormReservasi = () => {
         <p className="font-bold text-xl text-center">REGISTRASI AKUN BIDAN</p>
         <hr />
 
-        <form onSubmit={handleSubmit}>
-          <label>NIP</label>
-          <input
-            placeholder="masukan nip anda"
-            type="text"
-            className="input input-bordered w-full max-w82xl"
-            value={nip}
-            onChange={(e) => setNip(e.target.value)}
-          />
+        {/* <form onSubmit={handleSubmit}> */}
+        <label>NIP</label>
+        <input
+          placeholder="masukan nip anda"
+          type="text"
+          className="input input-bordered w-full max-w82xl"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
-          <label>Nama Lengkap</label>
-          <input
-            placeholder="masukan nama anda"
-            type="text"
-            className="input input-bordered w-full max-w82xl"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
-          />
+        <label>Nama Lengkap</label>
+        <input
+          placeholder="masukan nama anda"
+          type="text"
+          className="input input-bordered w-full max-w82xl"
+          value={nama}
+          onChange={(e) => setNama(e.target.value)}
+        />
 
-          <label>Email</label>
-          <input
-            placeholder="masukan email anda"
-            type="text"
-            className="input input-bordered w-full max-w-8xl"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <label>Email</label>
+        <input
+          placeholder="masukan email anda"
+          type="text"
+          className="input input-bordered w-full max-w-8xl"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-          <label>Password</label>
-          <input
-            placeholder="masukan password anda"
-            type="password"
-            className="input input-bordered w-full max-w-8xl"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <label>Password</label>
+        <input
+          placeholder="masukan password anda"
+          type="password"
+          className="input input-bordered w-full max-w-8xl"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-          <label>Alamat</label>
-          <input
-            placeholder="masukan alamat anda"
-            type="text"
-            className="input input-bordered w-full max-w-8xl"
-            value={alamat}
-            onChange={(e) => setAlamat(e.target.value)}
-          />
+        <label>Alamat</label>
+        <input
+          placeholder="masukan alamat anda"
+          type="text"
+          className="input input-bordered w-full max-w-8xl"
+          // value={alamat}
+          // onChange={(e) => setAlamat(e.target.value)}
+        />
 
-          <label>No Telp</label>
-          <input
-            placeholder="masukan no telp anda"
-            type="text"
-            className="input input-bordered w-full max-w-8xl"
-            value={noTelp}
-            onChange={(e) => setNoTelp(e.target.value)}
-          />
+        <label>No Telp</label>
+        <input
+          placeholder="masukan no telp anda"
+          type="text"
+          className="input input-bordered w-full max-w-8xl"
+          // value={noTelp}
+          // onChange={(e) => setNoTelp(e.target.value)}
+        />
 
-          <div className="flex flex-row-reverse">
-            <button type="submit" className="btn btn-primary">
-              DAFTAR
-            </button>
-          </div>
-        </form>
+        <div className="flex flex-row-reverse">
+          <button
+            navigate
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => {
+              handleSimpan();
+            }}
+          >
+            DAFTAR
+          </button>
+        </div>
+        {/* </form> */}
       </div>
     </div>
   );

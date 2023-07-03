@@ -4,16 +4,42 @@ import axios from "axios";
 import Navbar from "../../Component/Navbar";
 import SidebarPasien from "../../Component/Admin/SidebarAdminn";
 import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
+import Bidan from "./Bidan";
 
 const DataBidan = (props) => {
   const navigate = useNavigate();
   const [listBidan, setLIstBidan] = useState([""]);
+  const deleteDataBidan = async (ID_USERNAME) => {
+    try {
+      const response = await axios.delete(
+        `https://82de-180-244-138-171.ngrok-free.app/api/deletebidan/${ID_USERNAME}`
+      );
+      console.log(response);
+      alert("Data Bidan Berhasil Dihapus");
+      getListBidan();
+    } catch (error) {
+      alert(`GAGAL!`);
+    }
+  };
+
+  const getListBidan = async () => {
+    try {
+      const response = await axios.get(
+        `https://82de-180-244-138-171.ngrok-free.app/api/getbidan`
+      );
+      setLIstBidan(response.data.data);
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
 
   useEffect(() => {
     console.log("TES: ", props);
     const getListBidan = async () => {
       try {
-        const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getbidan`);
+        const response = await axios.get(
+          `https://82de-180-244-138-171.ngrok-free.app/api/getbidan`
+        );
         setLIstBidan(response.data.data);
       } catch (error) {
         console.log("Error:", error);
@@ -54,11 +80,19 @@ const DataBidan = (props) => {
                       <td>
                         <div>
                           {/* </Link> */}
-                          <Link to="/data-pasien">
+                          <button
+                            className="btn btn-error"
+                            onClick={() => {
+                              deleteDataBidan(bidan.ID_USER);
+                            }}
+                          >
+                            Hapus
+                          </button>
+                          {/* <Link to="/data-pasien">
                             <button navigate className="btn btn-error">
                               Hapus
                             </button>
-                          </Link>
+                          </Link> */}
                         </div>
                       </td>
                     </tr>
