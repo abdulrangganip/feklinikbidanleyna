@@ -23,7 +23,7 @@ import CekDataPasienAnak from "../Pages/Pasien/CekDataPasienAnak";
 import TabelDataImunisasiPasien from "../Pages/Pasien/TabelDataImunisasiPasien";
 // Bidan
 import DashboardBidan from "../Pages/Bidan/DashboardBidan";
-import DataPasienBidan from "../Pages/Bidan/DataPasienBidan";
+import DataPasienBidan from "../Pages/Admin/DataPasien";
 import TabelInputKB from "../Component/Bidan/TabelInputKB";
 import TabelInputImunisasi from "../Component/Bidan/TabelInputImunisasi";
 import TabelInputKehamilan from "../Component/Bidan/TabelInputKehamilan";
@@ -37,6 +37,7 @@ const ROLE_NAME = {
 
 const PrivateRoutes = () => {
   const user = useSelector((state) => state.data?.user);
+  console.log(user);
   const role = user ? user["TIPE_USER"] : null;
   console.log("[role]: ", role);
 
@@ -47,7 +48,7 @@ const PrivateRoutes = () => {
         <>
           <Route path="/dashboard" element={<DashboardAdminn />} />
           <Route path="/jadwal-pelayanan" element={<JadwalLayanan />} />
-          <Route path="/data-pasien" element={<DataPasien />} />
+          <Route path="/data-pasien" element={<DataPasien user={user} role={role} />} />
           <Route path="/data-pasien-bidan" element={<DataPasienBidan />} />
           <Route path="/create-data-anak" element={<CreateDataAnak />} />
           <Route path="/create-data-ibu" element={<CreateDataIbu />} />
@@ -69,14 +70,18 @@ const PrivateRoutes = () => {
       ) : role && role.toUpperCase() === ROLE_NAME.BIDAN ? (
         <>
           <Route path="/dashboard" element={<DashboardBidan />} />
-          <Route path="/data-pasien-bidan" element={<DataPasienBidan />} />
-          <Route path="/cek-data-pasien" element={<CekDataPasien />} />
+          <Route path="/data-pasien" element={<DataPasien user={user} role={role} />} />
+          <Route path="/detail-data-pasien" element={<DetailDataPasien />} />
+          {/* <Route path="/data-pasien-bidan" element={<DataPasienBidan />} />
+          <Route path="/cek-data-pasien" element={<CekDataPasien />} /> */}
           <Route path="/input-kb" element={<TabelInputKB />} />
           <Route path="/cek-data-pasien/data-kb-pasien" element={<TabelDataKBPasien />} />
           <Route path="/cek-data-pasien/data-kehamilan-pasien" element={<TabelDataKehamilanPasien />} />
           <Route path="/cek-data-pasien/data-imunisasi-pasien" element={<TabelDataImunisasiPasien />} />
           <Route path="/input-imunisasi" element={<TabelInputImunisasi />} />
           <Route path="/input-kehamilan" element={<TabelInputKehamilan />} />
+          <Route path="/data-pasien/data-kehamilan" element={<TabelDataKehamilan />} />
+          <Route path="/data-pasien/data-kb" element={<TabelDataKB />} />
           {/* <Route path="/data-pasien/data-kehamilan" element={<TabelDataKehamilan />} /> */}
         </>
       ) : role && role.toUpperCase() === ROLE_NAME.PASIEN ? (

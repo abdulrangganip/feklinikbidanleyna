@@ -1,29 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Navbar from "../../Component/Navbar";
 import SidebarPasien from "../../Component/Admin/SidebarAdminn";
 import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 
-function DataBidan() {
-  const [tableHeader, setTableHeader] = useState();
-  const [initiateTable, setInitiateTable] = useState(1);
-  let headerDataImunisasi;
-  let contentDataImunisasi;
+const DataBidan = (props) => {
+  const navigate = useNavigate();
+  const [listBidan, setLIstBidan] = useState([""]);
 
-  const handlerInitiate1 = () => {
-    setInitiateTable(1);
-  };
+  useEffect(() => {
+    console.log("TES: ", props);
+    const getListBidan = async () => {
+      try {
+        const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getbidan`);
+        setLIstBidan(response.data.data);
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
 
-  if (initiateTable === 1) {
-    headerDataImunisasi = ["NO", "NIP ", "NAMA", "EMAIL", "ALAMAT", "NO TELP"];
-    contentDataImunisasi = [
-      "1",
-      "197002042002212022",
-      "RINA SULANJANA",
-      "RINA SULANJANA@GMAIL.COM",
-      "JLN PANIKA ASIH NO 24 RT 02 RW 09",
-      "089516175704",
-    ];
-  }
+    getListBidan();
+  }, [props]);
 
   return (
     <div className="card bg-slate-500">
@@ -31,25 +29,40 @@ function DataBidan() {
       <SidebarAdminn>
         <div className="card w-auto mx-auto bg-white">
           <div className="mt-10 p-4">
-            <p className="text-lg font-bold">DATA AKUN BIDAN</p>
+            <p className="text-lg font-bold">DATA BIDAN</p>
             <div className="flex flex-row justify-center"></div>
             <div className="overflow-x-auto w-[73rem] mx-auto">
               <table className="table table-zebra border">
-                {/* head */}
-                <thead>
-                  <tr>
-                    {headerDataImunisasi.map((item) => (
-                      <th>{item}</th>
-                    ))}
-                  </tr>
-                </thead>
                 <tbody>
-                  {/* row 1 */}
                   <tr>
-                    {contentDataImunisasi.map((item) => (
-                      <td>{item}</td>
-                    ))}
+                    <td>No</td>
+                    <td>Nama Bidan</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                    {/* <td>Alamat</td>
+                  <td>No. Telepon</td>
+                  <td>No. NIP</td> */}
+                    <td>Aksi</td>
                   </tr>
+                  {listBidan.map((bidan, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{bidan.NAMA}</td>
+                      <td>{bidan.USERNAME}</td>
+                      <td>{bidan.PASSWORD}</td>
+                      {/* <td>{pasien.NO_NIK}</td> */}
+                      <td>
+                        <div>
+                          {/* </Link> */}
+                          <Link to="/data-pasien">
+                            <button navigate className="btn btn-error">
+                              Hapus
+                            </button>
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -58,6 +71,6 @@ function DataBidan() {
       </SidebarAdminn>
     </div>
   );
-}
+};
 
 export default DataBidan;

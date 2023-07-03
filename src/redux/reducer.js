@@ -1,4 +1,4 @@
-import { SET_USER, DELETE_USER, SET_IS_LOADING, SET_ERROR } from "./type";
+import { SET_USER, DELETE_USER, SET_IS_LOADING, SET_ERROR, SET_USER_PASIEN } from "./type";
 
 const initialState = {
   user: null,
@@ -12,6 +12,11 @@ export default function reducer(state = initialState, action) {
 
   switch (type) {
     case SET_USER:
+      return {
+        ...state,
+        user: payload,
+      };
+    case SET_USER_PASIEN:
       return {
         ...state,
         user: payload,

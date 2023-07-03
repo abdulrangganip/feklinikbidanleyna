@@ -9,9 +9,7 @@ const TabelInputKB = () => {
       <Navbar />
       <SidebarBidan>
         <div className="card bg-white my-5">
-          <p className="font-bold text-xl text-center py-4">
-            KELUARGA BERENCANA
-          </p>
+          <p className="font-bold text-xl text-center py-4">KELUARGA BERENCANA</p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">

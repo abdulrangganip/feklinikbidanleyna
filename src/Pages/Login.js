@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { login } from "../redux/crud";
-import { setUser } from "../redux/action";
+import { login, loginPasien } from "../redux/crud";
+import { setUser, setUserPasien } from "../redux/action";
 
 const Login = () => {
+  const [loginType, setLoginType] = useState("Pasien");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [no_nik, setNoNIK] = useState("");
+  const [no_rm, setNoRM] = useState("");
+
   const dispatch = useDispatch();
   const handleLogin = async () => {
     try {
@@ -18,6 +21,20 @@ const Login = () => {
         throw new Error(response.message);
       }
       dispatch(setUser(response.data?.data));
+    } catch (err) {
+      console.log("[login-error]: ", err);
+    }
+  };
+
+  const handleLoginPasien = async () => {
+    try {
+      const response = await loginPasien(no_nik, no_rm);
+      console.log(response);
+      if (response.status !== 200) {
+        throw new Error(response.message);
+      }
+
+      dispatch(setUserPasien({ ...response.data?.data, TIPE_USER: "pasien" }));
     } catch (err) {
       console.log("[login-error]: ", err);
     }
@@ -41,33 +58,78 @@ const Login = () => {
               <p className="text-center font-bold text-xl">Login</p>
               <p className="text-center">Sign in to your account</p>
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Username</span>
-              </label>
-              <input type="text" placeholder="username" className="input input-bordered" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <div style={{ display: "flex", minWidth: "100%", flexDirection: "row" }}>
+              <div
+                onClick={() => {
+                  setLoginType("Admin/Bidan");
+                }}
+                style={{ color: loginType === "Admin/Bidan" ? "#F0F0F0" : "#000", cursor: "pointer" }}
+              >
+                Login (Admin/Bidan)
+              </div>
+              <div>|</div>
+              <div
+                onClick={() => {
+                  setLoginType("Pasien");
+                }}
+                style={{ color: loginType === "Pasien" ? "#F0F0F0" : "#000", cursor: "pointer" }}
+              >
+                Login (Pasien)
+              </div>
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input type="password" placeholder="password" className="input input-bordered" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <label className="label flex flex-row-reverse">
-                {/* <a
-                  href="#"
-                  className="label-text-alt link link-hover text-orange-500"
-                >
-                  Forgot password?
-                </a> */}
-              </label>
-            </div>
+            {loginType === "Pasien" ? (
+              <>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">No. NIK</span>
+                  </label>
+                  <input type="text" placeholder="No. NIK" className="input input-bordered" value={no_nik} onChange={(e) => setNoNIK(e.target.value)} />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">No. Rekam Medis</span>
+                  </label>
+                  <input type="text" placeholder="No. Rekam Medis" className="input input-bordered" value={no_rm} onChange={(e) => setNoRM(e.target.value)} />
+                  <label className="label flex flex-row-reverse">
+                    {/* <a
+                    href="#"
+                    className="label-text-alt link link-hover text-orange-500"
+                  >
+                    Forgot password?
+                  </a> */}
+                  </label>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Username</span>
+                  </label>
+                  <input type="text" placeholder="username" className="input input-bordered" value={username} onChange={(e) => setUsername(e.target.value)} />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input type="password" placeholder="password" className="input input-bordered" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <label className="label flex flex-row-reverse">
+                    {/* <a
+                      href="#"
+                      className="label-text-alt link link-hover text-orange-500"
+                    >
+                      Forgot password?
+                    </a> */}
+                  </label>
+                </div>
+              </>
+            )}
             <div className="form-control mt-6">
               <div className="w-full max-w-2xl">
-                <button onClick={handleLogin} className="btn w-full bg-orange-500">
+                <button onClick={loginType === "Pasien" ? handleLoginPasien : handleLogin} className="btn w-full bg-orange-500">
                   Login
                 </button>
               </div>
-
               {/* <p className="text-center">Belum punya akun?</p>
               <a
                 href="/register"

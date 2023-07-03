@@ -4,14 +4,12 @@ import Navbar from "../../Component/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const DataPasien = () => {
+const DataPasien = (props) => {
   const navigate = useNavigate();
   const [listPasien, setLIstPasien] = useState([""]);
   const deleteDataPasien = async (ID_PASIEN) => {
     try {
-      const response = await axios.delete(
-        `https://82de-180-244-138-171.ngrok-free.app/api/deletepasien/${ID_PASIEN}`
-      );
+      const response = await axios.delete(`https://82de-180-244-138-171.ngrok-free.app/api/deletepasien/${ID_PASIEN}`);
       console.log(response);
       alert("Data Pasien Berhasil Dihapus :)");
       getListPasien();
@@ -22,9 +20,7 @@ const DataPasien = () => {
 
   const getListPasien = async () => {
     try {
-      const response = await axios.get(
-        `https://82de-180-244-138-171.ngrok-free.app/api/getpasien`
-      );
+      const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getpasien`);
       setLIstPasien(response.data.data);
     } catch (error) {
       console.log("Error:", error);
@@ -32,8 +28,17 @@ const DataPasien = () => {
   };
 
   useEffect(() => {
+    const getListPasien = async () => {
+      try {
+        const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getpasien`);
+        setLIstPasien(response.data.data);
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
+
     getListPasien();
-  }, []);
+  }, [props]);
 
   return (
     <div className="bg-slate-500">
@@ -41,14 +46,17 @@ const DataPasien = () => {
       <SidebarAdminn>
         <div className="card bg-white">
           <div className="card-body p-5">
-            <div className="flex gap-x-3">
-              <Link to="/create-data-ibu">
-                <button className="btn btn-primary">Create Data Ibu</button>
-              </Link>
-              <Link to="/create-data-anak">
-                <button className="btn btn-primary">Create Data Anak</button>
-              </Link>
-            </div>
+            {props.role === "ADMIN" && (
+              <div className="flex gap-x-3">
+                <Link to="/create-data-ibu">
+                  <button className="btn btn-primary">Create Data Ibu</button>
+                </Link>
+                <Link to="/create-data-anak">
+                  <button className="btn btn-primary">Create Data Anak</button>
+                </Link>
+              </div>
+            )}
+
             <table className="table">
               <tbody>
                 <tr>
@@ -101,4 +109,5 @@ const DataPasien = () => {
     </div>
   );
 };
+
 export default DataPasien;

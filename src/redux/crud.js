@@ -4,6 +4,7 @@ import axios from "axios";
 const URL_BE = "https://82de-180-244-138-171.ngrok-free.app/api";
 
 const LOGIN_URL = `${URL_BE}/signin`;
+const LOGIN_PASIEN_URL = `${URL_BE}/login`;
 
 /**
  *
@@ -14,6 +15,13 @@ export const login = (username, password) => {
   return axios.post(LOGIN_URL, {
     username,
     password,
+  });
+};
+
+export const loginPasien = (no_nik, no_rm) => {
+  return axios.post(LOGIN_PASIEN_URL, {
+    no_nik,
+    no_rm,
   });
 };
 
