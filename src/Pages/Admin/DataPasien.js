@@ -7,17 +7,31 @@ import axios from "axios";
 const DataPasien = () => {
   const navigate = useNavigate();
   const [listPasien, setLIstPasien] = useState([""]);
+  const deleteDataPasien = async (ID_PASIEN) => {
+    try {
+      const response = await axios.delete(
+        `https://82de-180-244-138-171.ngrok-free.app/api/deletepasien/${ID_PASIEN}`
+      );
+      console.log(response);
+      alert("Data Pasien Berhasil Dihapus :)");
+      getListPasien();
+    } catch (error) {
+      alert(`GAGAL!`);
+    }
+  };
+
+  const getListPasien = async () => {
+    try {
+      const response = await axios.get(
+        `https://82de-180-244-138-171.ngrok-free.app/api/getpasien`
+      );
+      setLIstPasien(response.data.data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   useEffect(() => {
-    const getListPasien = async () => {
-      try {
-        const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getpasien`);
-        setLIstPasien(response.data.data);
-      } catch (error) {
-        console.log("Error:", error);
-      }
-    };
-
     getListPasien();
   }, []);
 
@@ -59,17 +73,22 @@ const DataPasien = () => {
                           className="btn btn-warning"
                           onClick={() => {
                             const pasienId = pasien.ID_PASIEN;
-                            navigate("/detail-data-pasien", { state: { id_pasien: pasienId } });
+                            navigate("/detail-data-pasien", {
+                              state: { id_pasien: pasienId },
+                            });
                           }}
                         >
                           Detail
                         </button>
                         {/* </Link> */}
-                        <Link to="/data-pasien">
-                          <button navigate className="btn btn-error">
-                            Hapus
-                          </button>
-                        </Link>
+                        <button
+                          className="btn btn-error"
+                          onClick={() => {
+                            deleteDataPasien(pasien.ID_PASIEN);
+                          }}
+                        >
+                          Hapus
+                        </button>
                       </div>
                     </td>
                   </tr>
