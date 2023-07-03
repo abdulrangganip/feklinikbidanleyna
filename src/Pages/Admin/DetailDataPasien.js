@@ -25,6 +25,21 @@ const DataPasien = (props) => {
     }
   };
 
+  const [listDataAgama, setListDataAgama] = useState(null);
+  const getListAgama = async () => {
+    try {
+      const response = await axios.get(
+        `https://82de-180-244-138-171.ngrok-free.app/api/getagama`
+      );
+      const data = response.data?.data;
+
+      setListDataAgama(data);
+      console.log(data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
   const [detailPasien, setDetailPasien] = useState();
   const getListPasien = async (id) => {
     try {
@@ -38,13 +53,6 @@ const DataPasien = (props) => {
         moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD"),
         "year"
       );
-
-      console.log("LAHIR: ", data[0].TANGGAL_LAHIR);
-      console.log("AYEUNA: ", currentDate);
-      console.log(
-        "UMUR: ",
-        currentDate.diff(moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD"))
-      );
       setDetailPasien(data);
     } catch (error) {
       console.log("Error:", error);
@@ -53,6 +61,7 @@ const DataPasien = (props) => {
 
   useEffect(() => {
     console.log(location);
+    getListAgama();
     getListPasien(location?.state?.id_pasien);
   }, [location]);
 
