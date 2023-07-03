@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 import Navbar from "../../Component/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const DataPasien = () => {
+  const navigate = useNavigate();
   const [listPasien, setLIstPasien] = useState([""]);
 
   useEffect(() => {
     const getListPasien = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/getpasien`);
+        const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getpasien`);
         setLIstPasien(response.data.data);
       } catch (error) {
         console.log("Error:", error);
@@ -53,18 +54,17 @@ const DataPasien = () => {
                     <td>{pasien.NO_NIK}</td>
                     <td>
                       <div>
-                        <Link className="mr-3" to="/CekDataPasien">
-                          <button
-                            navigate
-                            className="btn btn-warning"
-                            onClick={() => {
-                              const pasienId = pasien.ID_PASIEN;
-                              console.log(pasienId);
-                            }}
-                          >
-                            Detail
-                          </button>
-                        </Link>
+                        {/* <Link className="mr-3" to="/detail-data-pasien"> */}
+                        <button
+                          className="btn btn-warning"
+                          onClick={() => {
+                            const pasienId = pasien.ID_PASIEN;
+                            navigate("/detail-data-pasien", { state: { id_pasien: pasienId } });
+                          }}
+                        >
+                          Detail
+                        </button>
+                        {/* </Link> */}
                         <Link to="/data-pasien">
                           <button navigate className="btn btn-error">
                             Hapus

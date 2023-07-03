@@ -9,6 +9,7 @@ import TabelDataKB from "../Pages/Admin/TabelDataKB";
 import TabelDataImunisasi from "../Pages/Admin/TabelDataImunisasi";
 import DashboardAdminn from "../Pages/Admin/DashboardAdminn";
 import DataPasien from "../Pages/Admin/DataPasien";
+import DetailDataPasien from "../Pages/Admin/DetailDataPasien";
 import Bidan from "../Pages/Admin/Bidan";
 import CreateDataAnak from "../Pages/Admin/CreateDataAnak";
 import CreateDataIbu from "../Pages/Admin/CreateDataIbu";
@@ -51,6 +52,7 @@ const PrivateRoutes = () => {
           <Route path="/create-data-anak" element={<CreateDataAnak />} />
           <Route path="/create-data-ibu" element={<CreateDataIbu />} />
           <Route path="/bidan" element={<Bidan />} />
+          <Route path="/detail-data-pasien" element={<DetailDataPasien />} />
           <Route path="/cek-data-pasien" element={<CekDataPasien />} />
           <Route path="/cek-data-pasien-anak" element={<CekDataPasienAnak />} />
           <Route path="/data-pasien/data-kehamilan" element={<TabelDataKehamilan />} />
@@ -82,18 +84,9 @@ const PrivateRoutes = () => {
           <Route path="/dashboard" element={<DashboardPasien />} />
           <Route path="/cek-data-pasien" element={<CekDataPasien />} />
           <Route path="/cek-data-pasien-anak" element={<CekDataPasienAnak />} />
-          <Route
-            path="/cek-data-pasien/data-kb-pasien"
-            element={<TabelDataKBPasien />}
-          />
-          <Route
-            path="/cek-data-pasien/data-kehamilan-pasien"
-            element={<TabelDataKehamilanPasien />}
-          />
-          <Route
-            path="/cek-data-pasien/data-imunisasi-pasien"
-            element={<TabelDataImunisasiPasien />}
-          />
+          <Route path="/cek-data-pasien/data-kb-pasien" element={<TabelDataKBPasien />} />
+          <Route path="/cek-data-pasien/data-kehamilan-pasien" element={<TabelDataKehamilanPasien />} />
+          <Route path="/cek-data-pasien/data-imunisasi-pasien" element={<TabelDataImunisasiPasien />} />
         </>
       ) : (
         // TODO:: need to replace this with error page such as 404 or else

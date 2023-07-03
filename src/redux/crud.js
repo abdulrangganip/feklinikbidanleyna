@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //TODO:: please put the value in .env file, const URL_BE = process.env.REACT_APP_URL_BE;
-const URL_BE = "http://127.0.0.1:8000/api";
+const URL_BE = "https://82de-180-244-138-171.ngrok-free.app/api";
 
 const LOGIN_URL = `${URL_BE}/signin`;
 

@@ -3,6 +3,7 @@ import Navbar from "../../Component/Navbar";
 import SidebarPasien from "../../Component/Pasien/SidebarPasien";
 
 const CekDataPasien = () => {
+  console.log("Cek Data Pasien");
   return (
     <div className="bg-slate-500">
       <Navbar />
@@ -83,9 +84,7 @@ const CekDataPasien = () => {
           </div>
         </div>
         <div className="card bg-white">
-          <p className="font-bold text-xl text-center py-4">
-            Data Keluarga Ibu
-          </p>
+          <p className="font-bold text-xl text-center py-4">Data Keluarga Ibu</p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
@@ -142,9 +141,7 @@ const CekDataPasien = () => {
         </div>
         <div className="mt-4">
           <button class="btn btn-wide mr-3">
-            <Link to="/cek-data-pasien/data-kehamilan-pasien">
-              KEHAMILAN DAN MELAHIRKAN
-            </Link>
+            <Link to="/cek-data-pasien/data-kehamilan-pasien">KEHAMILAN DAN MELAHIRKAN</Link>
           </button>
           <button class="btn btn-wide">
             <Link to="/cek-data-pasien/data-kb-pasien">KELUARGA BERENCANA</Link>
