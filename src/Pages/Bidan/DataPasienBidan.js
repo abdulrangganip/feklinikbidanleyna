@@ -35,9 +35,7 @@ const DataPasienBidan = () => {
               </Link> */}
             </div>
             <div className="">
-              <h1 className="text-3xl font-semibold card bg-white w-full card-body flex flex-col">
-                DATA PASIEN
-              </h1>
+              <h1 className="text-3xl font-semibold card bg-white w-full card-body flex flex-col">DATA PASIEN</h1>
             </div>
 
             <table className="table">
@@ -59,7 +57,7 @@ const DataPasienBidan = () => {
                     <td>{pasien.NO_NIK}</td>
                     <td>
                       <div>
-                        <Link className="mr-3" to="/input-kehamilan">
+                        <Link className="mr-3" to="/CekDataPasien.js">
                           <button navigate className="btn btn-warning">
                             Detail
                           </button>

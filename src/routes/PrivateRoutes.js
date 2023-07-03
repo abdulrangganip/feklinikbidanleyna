@@ -35,7 +35,8 @@ const ROLE_NAME = {
 };
 
 const PrivateRoutes = () => {
-  const role = useSelector((state) => state.data?.user?.role);
+  const user = useSelector((state) => state.data?.user);
+  const role = user ? user["TIPE_USER"] : null;
   console.log("[role]: ", role);
 
   //TODO:: please check again if the routes are correct for each role
@@ -52,31 +53,16 @@ const PrivateRoutes = () => {
           <Route path="/bidan" element={<Bidan />} />
           <Route path="/cek-data-pasien" element={<CekDataPasien />} />
           <Route path="/cek-data-pasien-anak" element={<CekDataPasienAnak />} />
-          <Route
-            path="/data-pasien/data-kehamilan"
-            element={<TabelDataKehamilan />}
-          />
+          <Route path="/data-pasien/data-kehamilan" element={<TabelDataKehamilan />} />
           <Route path="/data-pasien/data-kb" element={<TabelDataKB />} />
-          <Route
-            path="/data-pasien/data-imunisasi"
-            element={<TabelDataImunisasi />}
-          />
+          <Route path="/data-pasien/data-imunisasi" element={<TabelDataImunisasi />} />
           <Route path="/data-bidan" element={<DataBidan />} />
-          <Route
-            path="/cek-data-pasien/data-kb-pasien"
-            element={<TabelDataKBPasien />}
-          />
-          <Route
-            path="/cek-data-pasien/data-kehamilan-pasien"
-            element={<TabelDataKehamilanPasien />}
-          />
-          <Route
-            path="/cek-data-pasien/data-imunisasi-pasien"
-            element={<TabelDataImunisasiPasien />}
-          />
-          <Route path="/input-kb" element={<TabelInputKB />} />
+          <Route path="/cek-data-pasien/data-kb-pasien" element={<TabelDataKBPasien />} />
+          <Route path="/cek-data-pasien/data-kehamilan-pasien" element={<TabelDataKehamilanPasien />} />
+          <Route path="/cek-data-pasien/data-imunisasi-pasien" element={<TabelDataImunisasiPasien />} />
+          {/* <Route path="/input-kb" element={<TabelInputKB />} />
           <Route path="/input-imunisasi" element={<TabelInputImunisasi />} />
-          <Route path="/input-kehamilan" element={<TabelInputKehamilan />} />
+          <Route path="/input-kehamilan" element={<TabelInputKehamilan />} /> */}
         </>
       ) : role && role.toUpperCase() === ROLE_NAME.BIDAN ? (
         <>
@@ -84,16 +70,12 @@ const PrivateRoutes = () => {
           <Route path="/data-pasien-bidan" element={<DataPasienBidan />} />
           <Route path="/cek-data-pasien" element={<CekDataPasien />} />
           <Route path="/input-kb" element={<TabelInputKB />} />
-          <Route
-            path="/cek-data-pasien/data-kb-pasien"
-            element={<TabelDataKBPasien />}
-          />
+          <Route path="/cek-data-pasien/data-kb-pasien" element={<TabelDataKBPasien />} />
+          <Route path="/cek-data-pasien/data-kehamilan-pasien" element={<TabelDataKehamilanPasien />} />
+          <Route path="/cek-data-pasien/data-imunisasi-pasien" element={<TabelDataImunisasiPasien />} />
           <Route path="/input-imunisasi" element={<TabelInputImunisasi />} />
           <Route path="/input-kehamilan" element={<TabelInputKehamilan />} />
-          <Route
-            path="/data-pasien/data-kehamilan"
-            element={<TabelDataKehamilan />}
-          />
+          {/* <Route path="/data-pasien/data-kehamilan" element={<TabelDataKehamilan />} /> */}
         </>
       ) : role && role.toUpperCase() === ROLE_NAME.PASIEN ? (
         <>

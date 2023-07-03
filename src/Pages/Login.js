@@ -10,44 +10,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // const handleLogin = async () => {
-  //   try {
-  //     const response = await fetch("http://127.0.0.1:8000/api/signin", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ username, password }),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       const { tipe_user } = data;
-
-  //       if (tipe_user === "admin") {
-  //         // Redirect ke halaman dashboard admin
-  //         navigate("/dashboard");
-  //       } else if (tipe_user === "bidan") {
-  //         // Redirect ke halaman dashboard bidan
-  //         navigate("/dashboardBidan");
-  //       }
-  //     } else {
-  //       // Login gagal, tangani kesalahan
-  //       console.log("Login failed");
-  //     }
-  //   } catch (error) {
-  //     console.log("Error:", error);
-  //   }
-  // };
-
   const handleLogin = async () => {
     try {
       const response = await login(username, password);
+      console.log(response);
       if (response.status !== 200) {
         throw new Error(response.message);
       }
-      dispatch(setUser(response.data));
+      dispatch(setUser(response.data?.data));
     } catch (err) {
       console.log("[login-error]: ", err);
     }
