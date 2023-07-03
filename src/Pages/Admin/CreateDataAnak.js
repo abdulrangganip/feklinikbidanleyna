@@ -4,7 +4,7 @@ import Navbar from "../../Component/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const baseURL = "http://127.0.0.1:8000/api/addpasien";
+const baseURL = "https://82de-180-244-138-171.ngrok-free.app/api/addpasien";
 
 const CreateDataAnak = () => {
   const [post, setPost] = useState(null);
@@ -15,6 +15,7 @@ const CreateDataAnak = () => {
   const [umur, setUmur] = useState();
   const [alamat, setAlamat] = useState();
   const [golonganDarah, setGolonganDarah] = useState();
+  const [agama, setAgama] = useState();
   const [noNIK, setNoNIK] = useState();
   const [noKK, setNoKK] = useState();
   const [jenisKelamin, setJenisKelamin] = useState();
@@ -28,6 +29,7 @@ const CreateDataAnak = () => {
       //   umur,
       alamat: alamat,
       gol_darah: golonganDarah,
+      agama: agama,
       no_nik: noNIK,
       no_kk: noKK,
       jenis_kelammin: jenisKelamin,
@@ -92,6 +94,15 @@ const CreateDataAnak = () => {
                   className="input input-info"
                 />
               </div>
+
+              <div className="grid grid-cols-2">
+                <label>AGAMA</label>
+                <input
+                  value={agama}
+                  onChange={(e) => setAgama(e.target.value)}
+                  className="input input-info"
+                />
+              </div>
             </div>
 
             <div className="flex flex-col gap-y-5">
@@ -150,11 +161,16 @@ const CreateDataAnak = () => {
               </div>
             </div>
             <div>
-              <Link to="/data-pasien">
-                <button navigate className="btn btn-success">
-                  SIMPAN
-                </button>
-              </Link>
+              {/* <Link to="/data-pasien"> */}
+              <button
+                onClick={() => {
+                  createPost();
+                }}
+                className="btn btn-success"
+              >
+                SIMPAN
+              </button>
+              {/* </Link> */}
             </div>
           </div>
         </div>

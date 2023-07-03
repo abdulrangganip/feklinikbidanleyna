@@ -28,15 +28,23 @@ const DataPasien = (props) => {
   const [detailPasien, setDetailPasien] = useState();
   const getListPasien = async (id) => {
     try {
-      const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getpasien/${id}`);
+      const response = await axios.get(
+        `https://82de-180-244-138-171.ngrok-free.app/api/getpasien/${id}`
+      );
       const data = response.data?.data;
 
       const currentDate = moment();
-      data[0].UMUR = currentDate.diff(moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD"), "year");
+      data[0].UMUR = currentDate.diff(
+        moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD"),
+        "year"
+      );
 
       console.log("LAHIR: ", data[0].TANGGAL_LAHIR);
       console.log("AYEUNA: ", currentDate);
-      console.log("UMUR: ", currentDate.diff(moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD")));
+      console.log(
+        "UMUR: ",
+        currentDate.diff(moment(data[0].TANGGAL_LAHIR, "YYYY-MM-DD"))
+      );
       setDetailPasien(data);
     } catch (error) {
       console.log("Error:", error);
@@ -97,51 +105,71 @@ const DataPasien = (props) => {
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label className="font-bold">NO RM</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].NO_RM : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].NO_RM : "-"}
+                </label>
               </div>
               <div className="grid grid-cols-2">
                 <label className="font-bold">NAMA LENGKAP</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].NAMA_LENGKAP : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].NAMA_LENGKAP : "-"}
+                </label>
               </div>
               <div className="grid grid-cols-2">
                 <label className="font-bold">TEMPAT LAHIR</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].TEMPAT_LAHIR : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].TEMPAT_LAHIR : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">TANGGAL LAHIR</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].TANGGAL_LAHIR : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].TANGGAL_LAHIR : "-"}
+                </label>
               </div>
               <div className="grid grid-cols-2">
                 <label className="font-bold">UMUR</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].UMUR : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].UMUR : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">ALAMAT</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].ALAMAT : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].ALAMAT : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">AGAMA </label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].AGAMA : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].AGAMA : "-"}
+                </label>
               </div>
             </div>
 
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label className="font-bold">GOLONGAN DARAH</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].GOL_DARAH : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].GOL_DARAH : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">NO NIK</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].NO_NIK : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].NO_NIK : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">NO KK</label>
-                <label className="input input-info">{detailPasien ? detailPasien[0].NO_KK : "-"}</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].NO_KK : "-"}
+                </label>
               </div>
 
               {/* <div className="grid grid-cols-2">
@@ -166,52 +194,84 @@ const DataPasien = (props) => {
           </div>
         </div>
         <div className="card bg-white">
-          <p className="font-bold text-xl text-center py-4">Data Keluarga Ibu</p>
+          <p className="font-bold text-xl text-center py-4">
+            Data Keluarga Ibu
+          </p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label className="font-bold">NAMA SUAMI</label>
-                <label className="input input-info">REINALDI FAUZI</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].keluarga.NAMA_SUAMI : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">UMUR SUAMI</label>
-                <label className="input input-info">26</label>
+                <label className="input input-info">
+                  {detailPasien
+                    ? detailPasien[0].keluarga.TEMPAT_LAHIR_SUAMI
+                    : "-"}
+                </label>
               </div>
               <div className="grid grid-cols-2">
                 <label className="font-bold">TEMPAT LAHIR SUAMI</label>
-                <label className="input input-info">BANDUNG</label>
+                <label className="input input-info">
+                  {detailPasien
+                    ? detailPasien[0].keluarga.TANGGAL_LAHIR_SUAMI
+                    : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">TANGGAL LAHIR SUAMI</label>
-                <label className="input input-info">8 JANUARI 1997</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].keluarga.AGAMA_SUAMI : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">AGAMA</label>
-                <label className="input input-info">ISLAM</label>
+                <label className="input input-info">
+                  {detailPasien
+                    ? detailPasien[0].keluarga.PENDIDIKAN_SUAMI
+                    : "-"}
+                </label>
               </div>
             </div>
 
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label className="font-bold">PENDIDIKAN SUAMI</label>
-                <label className="input input-info">DIPLOMA III</label>
+                <label className="input input-info">
+                  {detailPasien
+                    ? detailPasien[0].keluarga.PEKERJAAN_SUAMI
+                    : "-"}
+                </label>
               </div>
               <div className="grid grid-cols-2">
                 <label className="font-bold">PEKERJAAN SUAMI</label>
-                <label className="input input-info">BUMN</label>
+                <label className="input input-info">
+                  {detailPasien
+                    ? detailPasien[0].keluarga.GOL_DARAH_SUAMI
+                    : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">GOL DARAH SUAMI</label>
-                <label className="input input-info">O</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien[0].keluarga.JUMLAH_ANAK : "-"}
+                </label>
               </div>
               <div className="grid grid-cols-2">
                 <label className="font-bold">JUMLAH ANAK </label>
-                <label className="input input-info">1</label>
+                <label className="input input-info">
+                  {detailPasien
+                    ? detailPasien[0].keluarga.UMUR_ANAK_TERAKHIR
+                    : "-"}
+                </label>
               </div>
 
               <div className="grid grid-cols-2">
@@ -223,7 +283,9 @@ const DataPasien = (props) => {
         </div>
         <div className="mt-4">
           <button class="btn btn-wide mr-3">
-            <Link to="/cek-data-pasien/data-kehamilan-pasien">KEHAMILAN DAN MELAHIRKAN</Link>
+            <Link to="/cek-data-pasien/data-kehamilan-pasien">
+              KEHAMILAN DAN MELAHIRKAN
+            </Link>
           </button>
           <button class="btn btn-wide">
             <Link to="/cek-data-pasien/data-kb-pasien">KELUARGA BERENCANA</Link>
@@ -305,7 +367,9 @@ const DataPasien = (props) => {
           </div>
         </div>
         <div className="card bg-white">
-          <p className="font-bold text-xl text-center py-4">Data Keluarga Ibu</p>
+          <p className="font-bold text-xl text-center py-4">
+            Data Keluarga Ibu
+          </p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
@@ -362,7 +426,9 @@ const DataPasien = (props) => {
         </div>
         <div className="mt-4">
           <button class="btn btn-wide mr-3">
-            <Link to="/cek-data-pasien/data-kehamilan-pasien">KEHAMILAN DAN MELAHIRKAN</Link>
+            <Link to="/cek-data-pasien/data-kehamilan-pasien">
+              KEHAMILAN DAN MELAHIRKAN
+            </Link>
           </button>
           <button class="btn btn-wide">
             <Link to="/cek-data-pasien/data-kb-pasien">KELUARGA BERENCANA</Link>
