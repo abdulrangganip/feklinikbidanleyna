@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const SidebarAdminn = ({ children }) => {
   const user = useSelector((state) => state.data?.user);
-  console.log(user);
   const role = user.TIPE_USER;
   const [open, setOpen] = useState(true);
   const [submenuOpen, setSubmenuOpen] = useState(false);

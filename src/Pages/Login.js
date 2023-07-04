@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { login, loginPasien } from "../redux/crud";
-import { setUser, setUserPasien } from "../redux/action";
+import { setIdPasien, setUser, setUserPasien } from "../redux/action";
 
 const Login = () => {
   const [loginType, setLoginType] = useState("Pasien");
@@ -35,10 +35,17 @@ const Login = () => {
       }
 
       dispatch(setUserPasien({ ...response.data?.data, TIPE_USER: "pasien" }));
+      // set session storage id user
+      console.log(response);
+      sessionStorage.setItem("user", JSON.stringify(response.data));
     } catch (err) {
       console.log("[login-error]: ", err);
     }
   };
+
+  useEffect(() => {
+    sessionStorage.removeItem("user");
+  }, []);
 
   return (
     <div className="hero min-h-screen bg-base-200">

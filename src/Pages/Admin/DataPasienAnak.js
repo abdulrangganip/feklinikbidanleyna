@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import DataPasienAnak from "./DetailDataPasienAnak";
 
-const DataPasienANAK = (props) => {
+const DataPasien = (props) => {
   const navigate = useNavigate();
   const [listPasien, setLIstPasien] = useState([""]);
   const deleteDataPasien = async (ID_PASIEN) => {
@@ -21,7 +21,7 @@ const DataPasienANAK = (props) => {
 
   const getListPasien = async () => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getpasien`);
+      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getpasien/anak`);
       setLIstPasien(response.data.data);
     } catch (error) {
       console.log("Error:", error);
@@ -82,7 +82,7 @@ const DataPasienANAK = (props) => {
                           className="btn btn-warning"
                           onClick={() => {
                             const pasienId = pasien.ID_PASIEN;
-                            navigate("/detail-data-pasien", {
+                            navigate("/detail-data-pasien-anak", {
                               state: { id_pasien: pasienId },
                             });
                           }}
@@ -111,4 +111,4 @@ const DataPasienANAK = (props) => {
   );
 };
 
-export default DataPasienAnak;
+export default DataPasien;

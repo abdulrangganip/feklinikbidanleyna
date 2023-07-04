@@ -1,11 +1,12 @@
 import react, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../Component/Navbar";
 import SidebarBidan from "./SidebarBidan";
 
 const CreateDataKB = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { id_pasien } = useParams();
 
   const [tanggalDatang, setTanggalDatang] = useState("");
@@ -16,7 +17,7 @@ const CreateDataKB = () => {
   const [keluhanPasien, setKeluhanPasien] = useState("");
   const [diagnosa, setDiagnosa] = useState("");
   const [tindakan, setTindakan] = useState("");
-  const [metodeKb, setmetodeKb] = useState("1");
+  const [metodeKb, setmetodeKb] = useState();
   const [catatan, setCatatan] = useState("");
   const [tanggalKembali, setTanggalKembali] = useState("");
 
@@ -24,13 +25,15 @@ const CreateDataKB = () => {
     setValue(e.target.value);
   };
 
-  const postDataKB = async (id_pasien) => {
+  const postDataKB = async (id, data) => {
+    console.log("post data:", data);
     try {
-      const response = await axios.post(`https://f081-140-213-11-117.ngrok-free.app/api/pasien/${id_pasien}/pelayanan_kb`);
+      const response = await axios.post(`https://f081-140-213-11-117.ngrok-free.app/api/pasien/${id}/pelayanan_kb`, data);
       console.log(response);
       alert("Data KB Berhasil Ditambahkan!");
-      navigate("/data-pasien/data-kb");
+      // navigate("/data-pasien/data-kb");
     } catch (error) {
+      console.log(error);
       alert(`Simpan Data KB Gagal!`);
     }
   };
@@ -48,8 +51,8 @@ const CreateDataKB = () => {
     body.id_metode_kb = metodeKb;
     body.catatan = catatan;
     body.tanggal_kembali = tanggalKembali;
-
-    postDataKB(body);
+    // console.log("data :", body);
+    postDataKB(location.state.id_pasien, body);
   };
 
   return (
@@ -104,6 +107,7 @@ const CreateDataKB = () => {
                     handleValue(setmetodeKb, e);
                   }}
                 >
+                  <option selected>Pilih Metode KB</option>
                   <option value={1}>Suntik</option>
                   <option value={2}>Pil</option>
                   <option value={3}>IUD</option>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../Component/Navbar";
-import SidebarPasien from "../../Component/Admin/SidebarAdminn";
 import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -8,40 +7,41 @@ import axios from "axios";
 function TabelDataKB() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [listDataKb, setLIstDataKb] = useState([""]);
+  const [listDataKb, setLIstDataKb] = useState([]);
 
-  // const [listMetodeKb, setListMetodeKb] = useState(null);
-  // const getListMetodeKb = async () => {
-  //   try {
-  //     const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getmetodekb`);
-  //     const data = response.data?.data;
-
-  //     setListMetodeKb(data);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log("Error:", error);
-  //   }
-  // };
+  const [listMetodeKb, setListMetodeKb] = useState(null);
+  const getListMetodeKb = async () => {
+    try {
+      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getmetodekb`);
+      const data = response.data?.data;
+      console.log("metode", data);
+      setListMetodeKb(data);
+      console.log(data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   const [dataKB, setDataKb] = useState();
   const getDataKb = async (ID_PASIEN) => {
     try {
       const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getkesehatanKb/${ID_PASIEN}`);
       const data = response.data?.data;
-
       setDataKb(data);
+      setLIstDataKb(data.pelayanan_kb);
+      console.log("res", data);
     } catch (error) {
       console.log("Error:", error);
     }
   };
 
   useEffect(() => {
-    // console.log(location);
-    //getListMetodeKb();
+    console.log(location);
+    getListMetodeKb();
     //getDataKb(location?.state?.ID_PASIEN);
     // console.log(location.state.id_pelayanan_kb);
-    getDataKb();
-  });
+    getDataKb(location?.state?.id_pasien);
+  }, [location]);
 
   return (
     <div className="card bg-slate-500">
@@ -50,7 +50,7 @@ function TabelDataKB() {
         <button
           onClick={() => {
             navigate("/input-kb", {
-              state: { id_pasien: location.state.ID_PASIEN },
+              state: { id_pasien: location.state.id_pasien },
             });
           }}
           className="btn btn-success"
@@ -82,20 +82,21 @@ function TabelDataKB() {
                   </tr>
                 </thead>
                 <tbody>
-                  {listDataKb.map((dataKB, index) => (
+                  {listDataKb.map((item, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{dataKB.TANGGAL_DATANG}</td>
-                      <td>{dataKB.TANGGAL_DILAYANI}</td>
-                      <td>{dataKB.BERAT_BADAN}</td>
-                      <td>{dataKB.TINGGI_BADAN}</td>
-                      <td>{dataKB.TEKANAN_DARAH}</td>
-                      <td>{dataKB.KELUHAN_PASIEN}</td>
-                      <td>{dataKB.DIAGNOSA}</td>
-                      <td>{dataKB.TINDAKAN}</td>
-                      {/* <td>{dataKB.metodekb.NAMA}</td> */}
-                      <td>{dataKB.CATATAN}</td>
-                      <td>{dataKB.TANGGAL_KEMBALI}</td>
+                      <td>{item.TANGGAL_DATANG}</td>
+                      <td>{item.TANGGAL_DILAYANI}</td>
+                      <td>{item.BERAT_BADAN}</td>
+                      <td>{item.TINGGI_BADAN}</td>
+                      <td>{item.TEKANAN_DARAH}</td>
+                      <td>{item.KELUHAN_PASIEN}</td>
+                      <td>{item.DIAGNOSA}</td>
+                      <td>{item.TINDAKAN}</td>
+                      <td>{listMetodeKb[item.ID_METODE_KB - 1].NAMA}</td>
+                      {/* (listDataAgama ? listDataAgama[detailPasien.keluarga.AGAMA_SUAMI - 1].NAMA : "-") */}
+                      <td>{item.CATATAN}</td>
+                      <td>{item.TANGGAL_KEMBALI}</td>
                       <td>
                         {/* <div>
                           {/* <Link className="mr-3" to="/detail-data-pasien"> */}

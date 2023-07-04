@@ -30,7 +30,7 @@ const DataPasienAnak = (props) => {
   const [detailPasien, setDetailPasien] = useState();
   const getListPasien = async (id) => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getpasien/${id}`);
+      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getpasien/anak/${id}`);
       const data = response.data?.data;
 
       const currentDate = moment();
