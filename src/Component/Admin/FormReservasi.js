@@ -56,7 +56,7 @@ const FormReservasi = () => {
         <div className="card bg-white">
           <div className="card-body flex flex-col">
             <p className="font-bold text-xl text-center">
-              REGISTRASIdsadsad AKUN BIDAN
+              REGISTRASI AKUN BIDAN
             </p>
             <hr />
             {/* <form onSubmit={handleSubmit}> */}
