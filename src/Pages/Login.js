@@ -47,7 +47,9 @@ const Login = () => {
           <h1 className="text-5xl font-bold text-orange-500">
             Hallo <br /> Bunda,
           </h1>
-          <p className="py-6 text-orange-500 font-semibold">Selamat datang di aplikasi Bidan Leyna Merlina Sarkosi</p>
+          <p className="py-6 text-orange-500 font-semibold">
+            Selamat datang di aplikasi Bidan Leyna Merlina Sarkosi
+          </p>
         </div>
         <div className="card flex-shrink-0 border border-black w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
@@ -58,23 +60,39 @@ const Login = () => {
               <p className="text-center font-bold text-xl">Login</p>
               <p className="text-center">Sign in to your account</p>
             </div>
-            <div style={{ display: "flex", minWidth: "100%", flexDirection: "row" }}>
+            <div
+              style={{
+                display: "flex",
+                minWidth: "100%",
+                flexDirection: "row",
+              }}
+            >
               <div
                 onClick={() => {
                   setLoginType("Admin/Bidan");
                 }}
-                style={{ color: loginType === "Admin/Bidan" ? "#F0F0F0" : "#000", cursor: "pointer" }}
+                style={{
+                  color: loginType === "Admin/Bidan" ? "#F0F0F0" : "#000",
+                  cursor: "pointer",
+                }}
               >
-                ADMIN/BIDAN
+                <button className="btn w-full font font-bold  bg-orange-500">
+                  <span className="text-white">ADMIN/BIDAN</span>
+                </button>
               </div>
-              <div>|</div>
+              <div></div>
               <div
                 onClick={() => {
                   setLoginType("Pasien");
                 }}
-                style={{ color: loginType === "Pasien" ? "#F0F0F0" : "#000", cursor: "pointer" }}
+                style={{
+                  color: loginType === "Pasien" ? "#F0F0F0" : "#000",
+                  cursor: "pointer",
+                }}
               >
-                PASIEN
+                <button className="btn w-full font-bold mx-8 bg-orange-500">
+                  <span className="text-white">PASIEN</span>
+                </button>
               </div>
             </div>
             {loginType === "Pasien" ? (
@@ -83,13 +101,25 @@ const Login = () => {
                   <label className="label">
                     <span className="label-text">No. NIK</span>
                   </label>
-                  <input type="text" placeholder="No. NIK" className="input input-bordered" value={no_nik} onChange={(e) => setNoNIK(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="No. NIK"
+                    className="input input-bordered"
+                    value={no_nik}
+                    onChange={(e) => setNoNIK(e.target.value)}
+                  />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">No. Rekam Medis</span>
                   </label>
-                  <input type="text" placeholder="No. Rekam Medis" className="input input-bordered" value={no_rm} onChange={(e) => setNoRM(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="No. Rekam Medis"
+                    className="input input-bordered"
+                    value={no_rm}
+                    onChange={(e) => setNoRM(e.target.value)}
+                  />
                   <label className="label flex flex-row-reverse"></label>
                 </div>
               </>
@@ -99,20 +129,37 @@ const Login = () => {
                   <label className="label">
                     <span className="label-text">Username</span>
                   </label>
-                  <input type="text" placeholder="username" className="input input-bordered" value={username} onChange={(e) => setUsername(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="username"
+                    className="input input-bordered"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input type="password" placeholder="password" className="input input-bordered" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input
+                    type="password"
+                    placeholder="password"
+                    className="input input-bordered"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                   <label className="label flex flex-row-reverse"></label>
                 </div>
               </>
             )}
             <div className="form-control mt-6">
               <div className="w-full max-w-2xl">
-                <button onClick={loginType === "Pasien" ? handleLoginPasien : handleLogin} className="btn w-full bg-orange-500">
+                <button
+                  onClick={
+                    loginType === "Pasien" ? handleLoginPasien : handleLogin
+                  }
+                  className="btn w-full bg-orange-500"
+                >
                   Login
                 </button>
               </div>
