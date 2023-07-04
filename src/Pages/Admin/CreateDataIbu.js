@@ -41,7 +41,7 @@ const CreateDataIbu = () => {
   const postDataIbu = async (data) => {
     try {
       const response = await axios.post(
-        `https://82de-180-244-138-171.ngrok-free.app/api/addpasien`,
+        `https://f081-140-213-11-117.ngrok-free.app/api/addpasien`,
         data
       );
       console.log(response);

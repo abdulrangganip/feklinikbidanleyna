@@ -21,7 +21,7 @@ const FormReservasi = () => {
   const postFormReservasi = async (data) => {
     try {
       const response = await axios.post(
-        `https://82de-180-244-138-171.ngrok-free.app/api/addbidan`,
+        `https://f081-140-213-11-117.ngrok-free.app/api/addbidan`,
         data
       );
       console.log(response);

@@ -25,7 +25,9 @@ const CreateDataKB = () => {
 
   const postDataKB = async (ID_PASIEN) => {
     try {
-      const response = await axios.post(`https://82de-180-244-138-171.ngrok-free.app/api/pasien/${ID_PASIEN}/pelayanan_kb`);
+      const response = await axios.post(
+        `https://f081-140-213-11-117.ngrok-free.app/api/pasien/${ID_PASIEN}/pelayanan_kb`
+      );
       console.log(response);
       alert("Data KB Berhasil Ditambahkan!");
       navigate("/data-pasien/data-kb");
@@ -56,41 +58,67 @@ const CreateDataKB = () => {
       <Navbar />
       <SidebarBidan>
         <div className="card bg-white my-5">
-          <p className="font-bold text-xl text-center py-4">KELUARGA BERENCANA</p>
+          <p className="font-bold text-xl text-center py-4">
+            KELUARGA BERENCANA
+          </p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>TANGGAL DATANG</label>
-                <input className="input input-info" onChange={(e) => handleValue(setTanggalDatang, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setTanggalDatang, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>TANGGAL DILAYANI</label>
-                <input className="input input-info" onChange={(e) => handleValue(setTanggalDilayani, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setTanggalDilayani, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>BERAT BADAN</label>
-                <input className="input input-info" onChange={(e) => handleValue(setberatBadan, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setberatBadan, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>TINGGI BADAN</label>
-                <input className="input input-info" onChange={(e) => handleValue(setTinggiBadan, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setTinggiBadan, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>TEKANAN DARAH</label>
-                <input className="input input-info" onChange={(e) => handleValue(setTekananDarah, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setTekananDarah, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>KELUHAN</label>
-                <input className="input input-info" onChange={(e) => handleValue(setKeluhanPasien, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setKeluhanPasien, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>DIAGNOSA</label>
-                <input className="input input-info" onChange={(e) => handleValue(setDiagnosa, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setDiagnosa, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>TINDAKAN</label>
-                <input className="input input-info" onChange={(e) => handleValue(setTindakan, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setTindakan, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>METODE KB</label>
@@ -111,11 +139,17 @@ const CreateDataKB = () => {
               </div>
               <div className="grid grid-cols-2">
                 <label>CATATAN</label>
-                <input className="input input-info" onChange={(e) => handleValue(setCatatan, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setCatatan, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>TANGGAL_KEMBALI</label>
-                <input className="input input-info" onChange={(e) => handleValue(setTanggalKembali, e)} />
+                <input
+                  className="input input-info"
+                  onChange={(e) => handleValue(setTanggalKembali, e)}
+                />
               </div>
               <button
                 class="btn btn-warning btn-wide mr-3"

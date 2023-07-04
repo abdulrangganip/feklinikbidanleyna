@@ -12,7 +12,7 @@ const DataBidan = (props) => {
   const deleteDataBidan = async (ID_USERNAME) => {
     try {
       const response = await axios.delete(
-        `https://82de-180-244-138-171.ngrok-free.app/api/deletebidan/${ID_USERNAME}`
+        `https://f081-140-213-11-117.ngrok-free.app/api/deletebidan/${ID_USERNAME}`
       );
       console.log(response);
       alert("Data Bidan Berhasil Dihapus");
@@ -25,7 +25,7 @@ const DataBidan = (props) => {
   const getListBidan = async () => {
     try {
       const response = await axios.get(
-        `https://82de-180-244-138-171.ngrok-free.app/api/getbidan`
+        `https://f081-140-213-11-117.ngrok-free.app/api/getbidan`
       );
       setLIstBidan(response.data.data);
     } catch (error) {
@@ -38,7 +38,7 @@ const DataBidan = (props) => {
     const getListBidan = async () => {
       try {
         const response = await axios.get(
-          `https://82de-180-244-138-171.ngrok-free.app/api/getbidan`
+          `https://f081-140-213-11-117.ngrok-free.app/api/getbidan`
         );
         setLIstBidan(response.data.data);
       } catch (error) {

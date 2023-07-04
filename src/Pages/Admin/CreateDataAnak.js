@@ -4,11 +4,11 @@ import Navbar from "../../Component/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const baseURL = "https://82de-180-244-138-171.ngrok-free.app/api/addpasien";
+const baseURL = "https://f081-140-213-11-117.ngrok-free.app/api/addpasienAnak";
 
 const CreateDataAnak = () => {
   const [post, setPost] = useState(null);
-  // const [noRM, setNoRM] = useState();
+  const [noRM, setNoRM] = useState();
   const [namaLengkap, setNamaLengkap] = useState();
   const [tempatLahir, setTempatLahir] = useState();
   const [tanggalLahir, setTanggalLahir] = useState();
@@ -24,15 +24,17 @@ const CreateDataAnak = () => {
   const createPost = () => {
     axios.post(baseURL, {
       nama_lengkap: namaLengkap,
+      no_rm: noRM,
       tempat_lahir: tempatLahir,
       tanggal_lahir: tanggalLahir,
       //   umur,
       alamat: alamat,
       gol_darah: golonganDarah,
-      agama: agama,
+      id_agama: agama,
+      id_jenis_pelayanan: 2,
       no_nik: noNIK,
       no_kk: noKK,
-      jenis_kelammin: jenisKelamin,
+      jenis_kelamin: jenisKelamin,
       nama_ayah: namaAyah,
       nama_ibu: namaIbu,
     });
@@ -49,9 +51,12 @@ const CreateDataAnak = () => {
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>NO RM</label>
-                <input className="input input-info" />
+                <input
+                  value={noRM}
+                  onChange={(e) => setNoRM(e.target.value)}
+                  className="input input-info"
+                />
               </div>
-
               <div className="grid grid-cols-2">
                 <label>NAMA LENGKAP</label>
                 <input
@@ -77,14 +82,14 @@ const CreateDataAnak = () => {
                   className="input input-info"
                 />
               </div>
-              <div className="grid grid-cols-2">
+              {/* <div className="grid grid-cols-2">
                 <label>UMUR</label>
                 <input
                   value={umur}
                   onChange={(e) => setUmur(e.target.value)}
                   className="input input-info"
                 />
-              </div>
+              </div> */}
 
               <div className="grid grid-cols-2">
                 <label>ALAMAT</label>

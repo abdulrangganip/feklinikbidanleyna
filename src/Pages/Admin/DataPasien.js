@@ -9,7 +9,9 @@ const DataPasien = (props) => {
   const [listPasien, setLIstPasien] = useState([""]);
   const deleteDataPasien = async (ID_PASIEN) => {
     try {
-      const response = await axios.delete(`https://82de-180-244-138-171.ngrok-free.app/api/deletepasien/${ID_PASIEN}`);
+      const response = await axios.delete(
+        `https://f081-140-213-11-117.ngrok-free.app/api/deletepasien/${ID_PASIEN}`
+      );
       console.log(response);
       alert("Data Pasien Berhasil Dihapus :)");
       getListPasien();
@@ -20,7 +22,9 @@ const DataPasien = (props) => {
 
   const getListPasien = async () => {
     try {
-      const response = await axios.get(`https://82de-180-244-138-171.ngrok-free.app/api/getpasien`);
+      const response = await axios.get(
+        `https://f081-140-213-11-117.ngrok-free.app/api/getpasien`
+      );
       setLIstPasien(response.data.data);
     } catch (error) {
       console.log("Error:", error);
