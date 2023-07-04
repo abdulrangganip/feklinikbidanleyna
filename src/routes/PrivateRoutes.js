@@ -9,7 +9,9 @@ import TabelDataKB from "../Pages/Admin/TabelDataKB";
 import TabelDataImunisasi from "../Pages/Admin/TabelDataImunisasi";
 import DashboardAdminn from "../Pages/Admin/DashboardAdminn";
 import DataPasien from "../Pages/Admin/DataPasien";
+import DataPasienAnak from "../Pages/Admin/DataPasienAnak";
 import DetailDataPasien from "../Pages/Admin/DetailDataPasien";
+import DetailDataPasienAnak from "../Pages/Admin/DetailDataPasienAnak";
 import Bidan from "../Pages/Admin/Bidan";
 import CreateDataAnak from "../Pages/Admin/CreateDataAnak";
 import CreateDataIbu from "../Pages/Admin/CreateDataIbu";
@@ -37,7 +39,7 @@ const ROLE_NAME = {
 
 const PrivateRoutes = () => {
   const user = useSelector((state) => state.data?.user);
-  console.log(user);
+  // console.log(user);
   const role = user ? user["TIPE_USER"] : null;
   console.log("[role]: ", role);
 
@@ -49,11 +51,13 @@ const PrivateRoutes = () => {
           <Route path="/dashboard" element={<DashboardAdminn />} />
           <Route path="/jadwal-pelayanan" element={<JadwalLayanan />} />
           <Route path="/data-pasien" element={<DataPasien user={user} role={role} />} />
+          <Route path="/data-pasien-anak" element={<DataPasienAnak user={user} role={role} />} />
           <Route path="/data-pasien-bidan" element={<DataPasienBidan />} />
           <Route path="/create-data-anak" element={<CreateDataAnak />} />
           <Route path="/create-data-ibu" element={<CreateDataIbu />} />
           <Route path="/bidan" element={<Bidan />} />
           <Route path="/detail-data-pasien" element={<DetailDataPasien />} />
+          <Route path="/detail-data-pasienAnak" element={<DetailDataPasienAnak />} />
           <Route path="/cek-data-pasien" element={<CekDataPasien />} />
           <Route path="/cek-data-pasien-anak" element={<CekDataPasienAnak />} />
           <Route path="/data-pasien/data-kehamilan" element={<TabelDataKehamilan />} />

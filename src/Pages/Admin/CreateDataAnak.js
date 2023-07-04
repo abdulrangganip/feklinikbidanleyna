@@ -3,19 +3,13 @@ import { useNavigate } from "react-router-dom";
 import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 import Navbar from "../../Component/Navbar";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
-//const baseURL = "https://f081-140-213-11-117.ngrok-free.app/api/addpasienAnak";
 
 const CreateDataAnak = () => {
   const navigate = useNavigate();
-
-  //const [post, setPost] = useState(null);
-  const [noRekamMedis, setNoRekamMedis] = useState();
+  const [noRM, setNoRekamMedis] = useState("");
   const [namaLengkap, setNamaLengkap] = useState("");
   const [tempatLahir, setTempatLahir] = useState("");
   const [tanggalLahir, setTanggalLahir] = useState("");
-  const [umur, setUmur] = useState("");
   const [alamat, setAlamat] = useState("");
   const [golonganDarah, setGolonganDarah] = useState("");
   const [agama, setAgama] = useState(1);
@@ -31,13 +25,10 @@ const CreateDataAnak = () => {
 
   const postDataAnak = async (data) => {
     try {
-      const response = await axios.post(
-        `https://f081-140-213-11-117.ngrok-free.app/api/addpasienAnak`,
-        data
-      );
+      const response = await axios.post(`https://f081-140-213-11-117.ngrok-free.app/api/addpasienAnak`, data);
       console.log(response);
       alert("Buat Data Pasien Anak Berhasil!");
-      navigate("/data-pasien");
+      navigate("/data-pasien-anak");
     } catch (error) {
       alert(`Buat Data Pasien Anak Gagal!`);
     }
@@ -45,7 +36,7 @@ const CreateDataAnak = () => {
 
   const handleSimpan = () => {
     let body = {};
-    body.no_rm = noRekamMedis;
+    body.no_rm = noRM;
     body.nama_lengkap = namaLengkap;
     body.tempat_lahir = tempatLahir;
     body.tanggal_lahir = tanggalLahir;
@@ -66,55 +57,31 @@ const CreateDataAnak = () => {
     <div className="bg-slate-500">
       <Navbar />
       <SidebarAdminn>
-        <div className="card bg-white">
+        <div className="card bg-white my-5">
           <p className="font-bold text-xl text-center py-4">Data Diri Anak</p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>NO RM</label>
-                <input
-                  onChange={(e) => handleValue(setNoRekamMedis, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setNoRekamMedis, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>NAMA LENGKAP</label>
-                <input
-                  onChange={(e) => handleValue(setNamaLengkap, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setNamaLengkap, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>TEMPAT LAHIR</label>
-                <input
-                  onChange={(e) => handleValue(setTempatLahir, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setTempatLahir, e)} className="input input-info" />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>TANGGAL LAHIR</label>
-                <input
-                  onChange={(e) => handleValue(setTanggalLahir, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setTanggalLahir, e)} className="input input-info" />
               </div>
-              {/* <div className="grid grid-cols-2">
-                <label>UMUR</label>
-                <input
-                  value={umur}
-                  onChange={(e) => setUmur(e.target.value)}
-                  className="input input-info"
-                />
-              </div> */}
-
               <div className="grid grid-cols-2">
                 <label>ALAMAT</label>
-                <input
-                  onChange={(e) => handleValue(setAlamat, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setAlamat, e)} className="input input-info" />
               </div>
 
               <div className="grid grid-cols-2">
@@ -132,57 +99,32 @@ const CreateDataAnak = () => {
                   <option value={2}>Kristen</option>
                   <option value={3}>Khatolik</option>
                   <option value={4}>Hindu</option>
+                  <option value={5}>Budha</option>
                 </select>
               </div>
-            </div>
-
-            <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>GOLONGAN DARAH</label>
-                <input
-                  onChange={(e) => handleValue(setGolonganDarah, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setGolonganDarah, e)} className="input input-info" />
               </div>
-
               <div className="grid grid-cols-2">
                 <label>NO NIK</label>
-                <input
-                  onChange={(e) => handleValue(setNoNIK, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setNoNIK, e)} className="input input-info" />
               </div>
-
               <div className="grid grid-cols-2">
                 <label>NO KK</label>
-                <input
-                  onChange={(e) => handleValue(setNoKK, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setNoKK, e)} className="input input-info" />
               </div>
-
               <div className="grid grid-cols-2">
                 <label>JENIS KELAMIN</label>
-                <input
-                  onChange={(e) => handleValue(setJenisKelamin, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setJenisKelamin, e)} className="input input-info" />
               </div>
-
               <div className="grid grid-cols-2">
                 <label>NAMA AYAH</label>
-                <input
-                  onChange={(e) => handleValue(setNamaAyah, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setNamaAyah, e)} className="input input-info" />
               </div>
-
               <div className="grid grid-cols-2">
                 <label>NAMA IBU</label>
-                <input
-                  onChange={(e) => handleValue(setNamaIbu, e)}
-                  className="input input-info"
-                />
+                <input onChange={(e) => handleValue(setNamaIbu, e)} className="input input-info" />
               </div>
             </div>
             <div>
@@ -196,15 +138,14 @@ const CreateDataAnak = () => {
               >
                 SIMPAN
               </button>
-              {/* </Link> */}
             </div>
           </div>
         </div>
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <button class="btn btn-wide mr-3">
             <Link to="/data-pasien/data-imunisasi">IMUNISASI</Link>
           </button>
-        </div>
+        </div> */}
       </SidebarAdminn>
     </div>
   );

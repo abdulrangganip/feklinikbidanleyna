@@ -20,10 +20,7 @@ const FormReservasi = () => {
   };
   const postFormReservasi = async (data) => {
     try {
-      const response = await axios.post(
-        `https://f081-140-213-11-117.ngrok-free.app/api/addbidan`,
-        data
-      );
+      const response = await axios.post(`https://f081-140-213-11-117.ngrok-free.app/api/addbidan`, data);
       console.log(response);
       alert("Akun Bidan Berhasil Dibuat");
       navigate("/data-bidan");
@@ -53,40 +50,16 @@ const FormReservasi = () => {
 
         {/* <form onSubmit={handleSubmit}> */}
         <label>NIP</label>
-        <input
-          placeholder="masukan nip anda"
-          type="text"
-          className="input input-bordered w-full max-w82xl"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <input placeholder="masukan nip anda" type="text" className="input input-bordered w-full max-w82xl" value={username} onChange={(e) => setUsername(e.target.value)} />
 
         <label>Nama Lengkap</label>
-        <input
-          placeholder="masukan nama anda"
-          type="text"
-          className="input input-bordered w-full max-w82xl"
-          value={nama}
-          onChange={(e) => setNama(e.target.value)}
-        />
+        <input placeholder="masukan nama anda" type="text" className="input input-bordered w-full max-w82xl" value={nama} onChange={(e) => setNama(e.target.value)} />
 
         <label>Email</label>
-        <input
-          placeholder="masukan email anda"
-          type="text"
-          className="input input-bordered w-full max-w-8xl"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <input placeholder="masukan email anda" type="text" className="input input-bordered w-full max-w-8xl" value={email} onChange={(e) => setEmail(e.target.value)} />
 
         <label>Password</label>
-        <input
-          placeholder="masukan password anda"
-          type="password"
-          className="input input-bordered w-full max-w-8xl"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <input placeholder="masukan password anda" type="password" className="input input-bordered w-full max-w-8xl" value={password} onChange={(e) => setPassword(e.target.value)} />
 
         <label>Alamat</label>
         <input

@@ -3,8 +3,9 @@ import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 import Navbar from "../../Component/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import DataPasienAnak from "./DetailDataPasienAnak";
 
-const DataPasien = (props) => {
+const DataPasienANAK = (props) => {
   const navigate = useNavigate();
   const [listPasien, setLIstPasien] = useState([""]);
   const deleteDataPasien = async (ID_PASIEN) => {
@@ -57,7 +58,6 @@ const DataPasien = (props) => {
                 </Link>
               </div>
             </div>
-
             <table className="table">
               <tbody>
                 <tr>
@@ -111,4 +111,4 @@ const DataPasien = (props) => {
   );
 };
 
-export default DataPasien;
+export default DataPasienAnak;

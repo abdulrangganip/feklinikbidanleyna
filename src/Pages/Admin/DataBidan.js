@@ -11,9 +11,7 @@ const DataBidan = (props) => {
   const [listBidan, setLIstBidan] = useState([""]);
   const deleteDataBidan = async (ID_USERNAME) => {
     try {
-      const response = await axios.delete(
-        `https://f081-140-213-11-117.ngrok-free.app/api/deletebidan/${ID_USERNAME}`
-      );
+      const response = await axios.delete(`https://f081-140-213-11-117.ngrok-free.app/api/deletebidan/${ID_USERNAME}`);
       console.log(response);
       alert("Data Bidan Berhasil Dihapus");
       getListBidan();
@@ -24,9 +22,7 @@ const DataBidan = (props) => {
 
   const getListBidan = async () => {
     try {
-      const response = await axios.get(
-        `https://f081-140-213-11-117.ngrok-free.app/api/getbidan`
-      );
+      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getbidan`);
       setLIstBidan(response.data.data);
     } catch (error) {
       console.log("Error", error);
@@ -37,9 +33,7 @@ const DataBidan = (props) => {
     console.log("TES: ", props);
     const getListBidan = async () => {
       try {
-        const response = await axios.get(
-          `https://f081-140-213-11-117.ngrok-free.app/api/getbidan`
-        );
+        const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getbidan`);
         setLIstBidan(response.data.data);
       } catch (error) {
         console.log("Error:", error);
