@@ -63,8 +63,8 @@ const PrivateRoutes = () => {
           <Route path="/cek-data-pasien/data-kb-pasien" element={<TabelDataKBPasien />} />
           <Route path="/cek-data-pasien/data-kehamilan-pasien" element={<TabelDataKehamilanPasien />} />
           <Route path="/cek-data-pasien/data-imunisasi-pasien" element={<TabelDataImunisasiPasien />} />
-          {/* <Route path="/input-kb" element={<TabelInputKB />} />
-          <Route path="/input-imunisasi" element={<TabelInputImunisasi />} />
+          <Route path="/input-kb" element={<TabelInputKB />} />
+          {/* <Route path="/input-imunisasi" element={<TabelInputImunisasi />} />
           <Route path="/input-kehamilan" element={<TabelInputKehamilan />} /> */}
         </>
       ) : role && role.toUpperCase() === ROLE_NAME.BIDAN ? (

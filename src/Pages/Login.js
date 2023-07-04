@@ -65,7 +65,7 @@ const Login = () => {
                 }}
                 style={{ color: loginType === "Admin/Bidan" ? "#F0F0F0" : "#000", cursor: "pointer" }}
               >
-                Login (Admin/Bidan)
+                ADMIN/BIDAN
               </div>
               <div>|</div>
               <div
@@ -74,7 +74,7 @@ const Login = () => {
                 }}
                 style={{ color: loginType === "Pasien" ? "#F0F0F0" : "#000", cursor: "pointer" }}
               >
-                Login (Pasien)
+                PASIEN
               </div>
             </div>
             {loginType === "Pasien" ? (
@@ -90,14 +90,7 @@ const Login = () => {
                     <span className="label-text">No. Rekam Medis</span>
                   </label>
                   <input type="text" placeholder="No. Rekam Medis" className="input input-bordered" value={no_rm} onChange={(e) => setNoRM(e.target.value)} />
-                  <label className="label flex flex-row-reverse">
-                    {/* <a
-                    href="#"
-                    className="label-text-alt link link-hover text-orange-500"
-                  >
-                    Forgot password?
-                  </a> */}
-                  </label>
+                  <label className="label flex flex-row-reverse"></label>
                 </div>
               </>
             ) : (
@@ -113,14 +106,7 @@ const Login = () => {
                     <span className="label-text">Password</span>
                   </label>
                   <input type="password" placeholder="password" className="input input-bordered" value={password} onChange={(e) => setPassword(e.target.value)} />
-                  <label className="label flex flex-row-reverse">
-                    {/* <a
-                      href="#"
-                      className="label-text-alt link link-hover text-orange-500"
-                    >
-                      Forgot password?
-                    </a> */}
-                  </label>
+                  <label className="label flex flex-row-reverse"></label>
                 </div>
               </>
             )}
@@ -130,13 +116,6 @@ const Login = () => {
                   Login
                 </button>
               </div>
-              {/* <p className="text-center">Belum punya akun?</p>
-              <a
-                href="/register"
-                className="text-center text-orange-500 hover:text-black"
-              >
-                Daftar
-              </a> */}
             </div>
           </div>
         </div>
