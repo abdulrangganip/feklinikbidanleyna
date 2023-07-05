@@ -9,7 +9,9 @@ const DataPasien = (props) => {
   const [listPasien, setLIstPasien] = useState([""]);
   const deleteDataPasien = async (ID_PASIEN) => {
     try {
-      const response = await axios.delete(`https://f081-140-213-11-117.ngrok-free.app/api/deletepasien/${ID_PASIEN}`);
+      const response = await axios.delete(
+        `https://f081-140-213-11-117.ngrok-free.app/api/deletepasien/${ID_PASIEN}`
+      );
       console.log(response);
       alert("Data Pasien Berhasil Dihapus :)");
       getListPasien();
@@ -20,7 +22,9 @@ const DataPasien = (props) => {
 
   const getListPasien = async () => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getpasien/ibu`);
+      const response = await axios.get(
+        `https://f081-140-213-11-117.ngrok-free.app/api/getpasien/ibu`
+      );
       setLIstPasien(response.data.data);
     } catch (error) {
       console.log("Error:", error);
@@ -53,6 +57,16 @@ const DataPasien = (props) => {
                 </Link>
               </div>
             )}
+
+            <div className="flex gap-x-3">
+              <Link to="/data-pasien">
+                <button className="btn btn-info">Data Pasien Ibu</button>
+              </Link>
+              <Link to="/data-pasien-anak">
+                <button className="btn btn-info">Data Pasien Anak</button>
+              </Link>
+            </div>
+
             {/* <div className="card-body p-5">
               <div className="flex justify-between"></div>
             </div> */}

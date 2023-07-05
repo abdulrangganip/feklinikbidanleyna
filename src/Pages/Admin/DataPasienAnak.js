@@ -58,6 +58,16 @@ const DataPasien = (props) => {
                 </Link>
               </div>
             )}
+
+            <div className="flex gap-x-3">
+              <Link to="/data-pasien">
+                <button className="btn btn-info">Data Pasien Ibu</button>
+              </Link>
+              <Link to="/data-pasien-anak">
+                <button className="btn btn-info">Data Pasien Anak</button>
+              </Link>
+            </div>
+
             {/* <div className="card-body p-5">
               <div className="flex gap-x-3"></div>
             </div> */}
