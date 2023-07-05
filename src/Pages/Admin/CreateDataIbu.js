@@ -94,7 +94,9 @@ const CreateDataIbu = () => {
       <Navbar />
       <SidebarAdminn>
         <div className="card bg-white my-5">
-          <p className="font-bold text-xl text-center py-4">Data Diri Ibu</p>
+          <p className="font-bold text-xl text-center py-4">
+            Buat Data Diri Pasien Ibu
+          </p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
@@ -195,16 +197,6 @@ const CreateDataIbu = () => {
                   onChange={(e) => handleValue(setNoKK, e)}
                 />
               </div>
-              {/* 
-              <div className="grid grid-cols-2">
-                <label>RIWAYAT PENYAKIT</label>
-                <input className="input input-info" />
-              </div>
-
-              <div className="grid grid-cols-2">
-                <label>RIWAYAT ALERGI</label>
-                <input className="input input-info" />
-              </div> */}
 
               <div className="grid grid-cols-2">
                 <label>PEKERJAAN</label>
@@ -250,7 +242,7 @@ const CreateDataIbu = () => {
         </div>
         <div className="card bg-white">
           <p className="font-bold text-xl text-center py-4">
-            Data Keluarga Ibu
+            Buat Data Keluarga Pasien Ibu
           </p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
@@ -382,16 +374,6 @@ const CreateDataIbu = () => {
               {/* </Link> */}
             </div>
           </div>
-        </div>
-        <div className="mt-4">
-          <button class="btn btn-wide mr-3">
-            <Link to="/data-pasien/data-kehamilan">
-              KEHAMILAN DAN MELAHIRKAN
-            </Link>
-          </button>
-          <button class="btn btn-wide">
-            <Link to="/data-pasien/data-kb">KELUARGA BERENCANA</Link>
-          </button>
         </div>
       </SidebarAdminn>
     </div>

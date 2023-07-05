@@ -63,7 +63,9 @@ const CreateDataAnak = () => {
       <Navbar />
       <SidebarAdminn>
         <div className="card bg-white my-5">
-          <p className="font-bold text-xl text-center py-4">Data Diri Anak</p>
+          <p className="font-bold text-xl text-center py-4">
+            Buat Data Diri Pasien Anak
+          </p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
@@ -201,16 +203,6 @@ const CreateDataAnak = () => {
               </button>
             </div>
           </div>
-        </div>
-        {/* <div className="mt-4">
-          <button class="btn btn-wide mr-3">
-            <Link to="/data-pasien/data-imunisasi">IMUNISASI</Link>
-          </button>
-        </div> */}
-        <div className="mt-4">
-          <button class="btn btn-wide">
-            <Link to="/data-pasien/data-imunisasi">IMUNISASI</Link>
-          </button>
         </div>
       </SidebarAdminn>
     </div>
