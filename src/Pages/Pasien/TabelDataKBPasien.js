@@ -12,7 +12,7 @@ function TabelDataKB() {
   // const location = useLocation();
   const [listDataKb, setLIstDataKb] = useState([]);
 
-  const [listMetodeKb, setListMetodeKb] = useState(null);
+  const [listMetodeKb, setListMetodeKb] = useState([]);
   const getListMetodeKb = async () => {
     try {
       const response = await axios.get(
@@ -90,35 +90,9 @@ function TabelDataKB() {
                       <td>{item.KELUHAN_PASIEN}</td>
                       <td>{item.DIAGNOSA}</td>
                       <td>{item.TINDAKAN}</td>
-                      <td>{listMetodeKb[item.ID_METODE_KB - 1].NAMA}</td>
-                      {/* (listDataAgama ? listDataAgama[detailPasien.keluarga.AGAMA_SUAMI - 1].NAMA : "-") */}
+                      {/* <td>{listMetodeKb[item.ID_METODE_KB - 1].NAMA}</td> */}
                       <td>{item.CATATAN}</td>
                       <td>{item.TANGGAL_KEMBALI}</td>
-                      <td>
-                        {/* <div>
-                          {/* <Link className="mr-3" to="/detail-data-pasien"> */}
-                        {/* <button
-                            className="btn btn-warning"
-                            onClick={() => {
-                              const pasienId = pasien.ID_PASIEN;
-                              navigate("/detail-data-pasien", {
-                                state: { id_pasien: pasienId },
-                              });
-                            }}
-                          >
-                            Detail
-                          </button> */}
-                        {/* </Link>
-                          <button
-                            className="btn btn-error"
-                            onClick={() => {
-                              deleteDataPasien(pasien.ID_PASIEN);
-                            }}
-                          >
-                            Hapus
-                          </button> */}
-                        {/* </div> */}
-                      </td>
                     </tr>
                   ))}
                 </tbody>
