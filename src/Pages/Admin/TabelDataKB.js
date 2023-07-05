@@ -12,7 +12,9 @@ function TabelDataKB(props) {
   const [listMetodeKb, setListMetodeKb] = useState(null);
   const getListMetodeKb = async () => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getmetodekb`);
+      const response = await axios.get(
+        `https://f081-140-213-11-117.ngrok-free.app/api/getmetodekb`
+      );
       const data = response.data?.data;
       console.log("metode", data);
       setListMetodeKb(data);
@@ -25,7 +27,9 @@ function TabelDataKB(props) {
   const [dataKB, setDataKb] = useState();
   const getDataKb = async (ID_PASIEN) => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getkesehatanKb/${ID_PASIEN}`);
+      const response = await axios.get(
+        `https://f081-140-213-11-117.ngrok-free.app/api/getkesehatanKb/${ID_PASIEN}`
+      );
       const data = response.data?.data;
       setDataKb(data);
       setLIstDataKb(data.pelayanan_kb);
@@ -51,14 +55,8 @@ function TabelDataKB(props) {
     <div className="card bg-slate-500">
       <Navbar />
       <SidebarAdminn>
-        {props.role === "bidan" && (
+        {/* {props.role === "bidan" && (
           <div className="flex gap-x-3">
-            {/* <Link to="/create-data-ibu">
-              <button className="btn btn-primary">Create Data Ibu</button>
-            </Link>
-            <Link to="/create-data-anak">
-              <button className="btn btn-primary">Create Data Anak</button>
-            </Link> */}
             <button
               onClick={() => {
                 navigate("/input-kb", {
@@ -70,7 +68,20 @@ function TabelDataKB(props) {
               TAMBAH
             </button>
           </div>
-        )}
+        )} */}
+
+        <div className="flex gap-x-3">
+          <button
+            onClick={() => {
+              navigate("/input-kb", {
+                state: { id_pasien: location.state.id_pasien },
+              });
+            }}
+            className="btn btn-success"
+          >
+            TAMBAH
+          </button>
+        </div>
 
         <div className="card w-auto mx-auto bg-white">
           <div className="mt-10 p-4">

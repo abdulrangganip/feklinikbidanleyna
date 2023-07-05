@@ -123,9 +123,6 @@ const CreateDataAnak = () => {
                   className="input input-info"
                 />
               </div>
-            </div>
-
-            <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>GOLONGAN DARAH</label>
                 <input
@@ -135,6 +132,9 @@ const CreateDataAnak = () => {
                   className="input input-info"
                 />
               </div>
+            </div>
+
+            <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>AGAMA</label>
                 {/* <input className="input input-info" /> */}
@@ -153,15 +153,7 @@ const CreateDataAnak = () => {
                   <option value={5}>Budha</option>
                 </select>
               </div>
-              <div className="grid grid-cols-2">
-                <label>GOLONGAN DARAH</label>
-                <input
-                  placeholder="Golongan Darah Pasien "
-                  type="text"
-                  onChange={(e) => handleValue(setGolonganDarah, e)}
-                  className="input input-info"
-                />
-              </div>
+
               <div className="grid grid-cols-2">
                 <label>RIWAYAT PENYAKIT</label>
                 <input

@@ -15,7 +15,9 @@ function TabelDataKB() {
   const [listMetodeKb, setListMetodeKb] = useState(null);
   const getListMetodeKb = async () => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getmetodekb`);
+      const response = await axios.get(
+        `https://f081-140-213-11-117.ngrok-free.app/api/getmetodekb`
+      );
       const data = response.data?.data;
       console.log("metode", data);
       setListMetodeKb(data);
@@ -28,7 +30,9 @@ function TabelDataKB() {
   const [dataKB, setDataKb] = useState();
   const getDataKb = async (id_pasien, tipe_pasien) => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getkesehatanKb/${id_pasien}`);
+      const response = await axios.get(
+        `https://f081-140-213-11-117.ngrok-free.app/api/getkesehatanKb/${id_pasien}`
+      );
       const data = response.data?.data;
       setDataKb(data);
       setLIstDataKb(data.pelayanan_kb);

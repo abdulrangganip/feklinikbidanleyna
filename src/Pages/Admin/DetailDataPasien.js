@@ -117,7 +117,14 @@ const DataPasien = (props) => {
 
               <div className="grid grid-cols-2">
                 <label className="font-bold">ALAMAT</label>
-                <label className="input input-info">
+                <label
+                  style={{
+                    width: "285px",
+                    height: "185px",
+                    paddingBottom: "150px",
+                  }}
+                  className="input input-info"
+                >
                   {detailPasien ? detailPasien.ALAMAT : "-"}
                 </label>
               </div>
@@ -149,6 +156,27 @@ const DataPasien = (props) => {
                 <label className="font-bold">NO KK</label>
                 <label className="input input-info">
                   {detailPasien ? detailPasien.NO_KK : "-"}
+                </label>
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label className="font-bold">NO TELP</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien.NO_TELP : "-"}
+                </label>
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label className="font-bold">RIWAYAT PENYAKIT</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien.RIWAYAT_PENYAKIT : "-"}
+                </label>
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label className="font-bold">RIWAYAT ALERGI</label>
+                <label className="input input-info">
+                  {detailPasien ? detailPasien.RIWAYAT_ALERGI : "-"}
                 </label>
               </div>
 

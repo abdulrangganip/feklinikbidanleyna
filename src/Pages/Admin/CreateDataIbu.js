@@ -156,18 +156,6 @@ const CreateDataIbu = () => {
                   onChange={(e) => handleValue(setAlamat, e)}
                 />
               </div>
-            </div>
-
-            <div className="flex flex-col gap-y-5">
-              <div className="grid grid-cols-2">
-                <label>NO.TELPON</label>
-                <input
-                  placeholder="No Telp Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNoTelp, e)}
-                />
-              </div>
               <div className="grid grid-cols-2">
                 <label>AGAMA</label>
                 {/* <input className="input input-info" /> */}
@@ -189,6 +177,36 @@ const CreateDataIbu = () => {
             </div>
 
             <div className="flex flex-col gap-y-5">
+              <div className="grid grid-cols-2">
+                <label>NO.TELPON</label>
+                <input
+                  placeholder="No Telp Pasien "
+                  type="text"
+                  className="input input-info"
+                  onChange={(e) => handleValue(setNoTelp, e)}
+                />
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label>PENDIDIKAN TERAKHIR</label>
+                <select
+                  className="input input-info"
+                  name="pendidikanTerakhir"
+                  id="pendidikanTerakhir"
+                  onChange={(e) => {
+                    handleValue(setPendidikanTerakhir, e);
+                  }}
+                >
+                  <option value={1}>SD</option>
+                  <option value={2}>SMP</option>
+                  <option value={3}>SMA/SMK</option>
+                  <option value={4}>D3</option>
+                  <option value={5}>D4</option>
+                  <option value={6}>S1</option>
+                  <option value={7}>S2</option>
+                  <option value={8}>S3</option>
+                </select>
+              </div>
               <div className="grid grid-cols-2">
                 <label>GOLONGAN DARAH</label>
                 <input
@@ -248,37 +266,9 @@ const CreateDataIbu = () => {
                   onChange={(e) => handleValue(setPekerjaan, e)}
                 />
               </div>
-
-              <div className="grid grid-cols-2">
-                <label>PENDIDIKAN TERAKHIR</label>
-                <select
-                  className="input input-info"
-                  name="pendidikanTerakhir"
-                  id="pendidikanTerakhir"
-                  onChange={(e) => {
-                    handleValue(setPendidikanTerakhir, e);
-                  }}
-                >
-                  <option value={1}>SD</option>
-                  <option value={2}>SMP</option>
-                  <option value={3}>SMA/SMK</option>
-                  <option value={4}>D3</option>
-                  <option value={5}>D4</option>
-                  <option value={6}>S1</option>
-                  <option value={7}>S2</option>
-                  <option value={8}>S3</option>
-                </select>
-              </div>
-              <div className="grid grid-cols-2">
-                <label>NO.TELPON</label>
-                <input
-                  placeholder="No Telp Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNoTelp, e)}
-                />
-              </div>
             </div>
+
+            <div className="flex flex-col gap-y-5"></div>
           </div>
         </div>
         <div className="card bg-white">
