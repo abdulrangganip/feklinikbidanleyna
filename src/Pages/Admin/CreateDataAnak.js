@@ -13,6 +13,8 @@ const CreateDataAnak = () => {
   const [tanggalLahir, setTanggalLahir] = useState("");
   const [alamat, setAlamat] = useState("");
   const [golonganDarah, setGolonganDarah] = useState("");
+  const [riwayatPenyakit, setRiwayatPenyakit] = useState("");
+  const [riwayatAlergi, setRiwayatAlergi] = useState("");
   const [agama, setAgama] = useState(1);
   const [noNIK, setNoNIK] = useState("");
   const [noKK, setNoKK] = useState("");
@@ -27,15 +29,15 @@ const CreateDataAnak = () => {
   const postDataAnak = async (data) => {
     try {
       const response = await axios.post(
-        `https://f081-140-213-11-117.ngrok-free.app/api/addpasienAnak`,
+        `https://f081-140-213-11-117.ngrok-free.app/api/addpasien`,
         data
       );
       console.log(response);
       alert("Buat Data Pasien Anak Berhasil!");
       navigate("/data-pasien-anak");
     } catch (error) {
+      console.log("error:", error);
       alert(`Buat Data Pasien Anak Gagal!`);
-      console.log(error);
     }
   };
 
@@ -47,6 +49,8 @@ const CreateDataAnak = () => {
     body.tanggal_lahir = tanggalLahir;
     body.alamat = alamat;
     body.gol_darah = golonganDarah;
+    body.riwayat_penyakit = riwayatPenyakit;
+    body.riwayat_alergi = riwayatAlergi;
     body.id_agama = agama;
     body.id_jenis_pelayanan = 2;
     body.no_nik = noNIK;
@@ -148,6 +152,33 @@ const CreateDataAnak = () => {
                   <option value={4}>Hindu</option>
                   <option value={5}>Budha</option>
                 </select>
+              </div>
+              <div className="grid grid-cols-2">
+                <label>GOLONGAN DARAH</label>
+                <input
+                  placeholder="Golongan Darah Pasien "
+                  type="text"
+                  onChange={(e) => handleValue(setGolonganDarah, e)}
+                  className="input input-info"
+                />
+              </div>
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT PENYAKIT</label>
+                <input
+                  placeholder="Riwayat Penyakit"
+                  type="text"
+                  className="input input-info"
+                  onChange={(e) => handleValue(setRiwayatPenyakit, e)}
+                />
+              </div>
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT Alergi</label>
+                <input
+                  placeholder="Riwayat Alergi"
+                  type="text"
+                  className="input input-info"
+                  onChange={(e) => handleValue(setRiwayatAlergi, e)}
+                />
               </div>
               <div className="grid grid-cols-2">
                 <label>NO NIK</label>

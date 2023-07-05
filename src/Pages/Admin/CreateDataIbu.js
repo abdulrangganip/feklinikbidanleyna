@@ -21,6 +21,8 @@ const CreateDataIbu = () => {
   const [noNik, setNoNik] = useState("");
   const [noKK, setNoKK] = useState("");
   const [noTelp, setNoTelp] = useState("");
+  const [riwayatPenyakit, setRiwayatPenyakit] = useState("");
+  const [riwayatAlergi, setRiwayatAlergi] = useState("");
   const [pekerjaan, setPekerjaan] = useState("");
   //const [jenisKelamin, setJenisKelamin] = useState("");
   //FORM STATE KELUARGA
@@ -66,6 +68,8 @@ const CreateDataIbu = () => {
     body.no_telp = noTelp;
     body.pekerjaan = pekerjaan;
     body.jenis_kelamin = "wanita";
+    body.riwayat_penyakit = riwayatPenyakit;
+    body.riwayat_alergi = riwayatAlergi;
     body.id_agama = agama;
     body.id_pendidikan_terakhir = parseInt(pendidikanTerakhir);
     body.keluarga = {
@@ -156,12 +160,12 @@ const CreateDataIbu = () => {
 
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
-                <label>GOLONGAN DARAH</label>
+                <label>NO.TELPON</label>
                 <input
-                  placeholder="Golongan Darah Pasien "
+                  placeholder="No Telp Pasien "
                   type="text"
                   className="input input-info"
-                  onChange={(e) => handleValue(setGolDarah, e)}
+                  onChange={(e) => handleValue(setNoTelp, e)}
                 />
               </div>
               <div className="grid grid-cols-2">
@@ -181,6 +185,38 @@ const CreateDataIbu = () => {
                   <option value={4}>Hindu</option>
                   <option value={5}>Budha</option>
                 </select>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-y-5">
+              <div className="grid grid-cols-2">
+                <label>GOLONGAN DARAH</label>
+                <input
+                  placeholder="Golongan Darah Pasien "
+                  type="text"
+                  className="input input-info"
+                  onChange={(e) => handleValue(setGolDarah, e)}
+                />
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT PENYAKIT</label>
+                <input
+                  placeholder="Riwayat Penyakit"
+                  type="text"
+                  className="input input-info"
+                  onChange={(e) => handleValue(setRiwayatPenyakit, e)}
+                />
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT Alergi</label>
+                <input
+                  placeholder="Riwayat Alergi"
+                  type="text"
+                  className="input input-info"
+                  onChange={(e) => handleValue(setRiwayatAlergi, e)}
+                />
               </div>
 
               <div className="grid grid-cols-2">
@@ -364,7 +400,6 @@ const CreateDataIbu = () => {
                 />
               </div>
             </div>
-
             <div>
               {/* <Link to="/data-pasien"> */}
               <button
@@ -384,4 +419,5 @@ const CreateDataIbu = () => {
     </div>
   );
 };
+
 export default CreateDataIbu;
