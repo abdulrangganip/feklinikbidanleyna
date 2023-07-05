@@ -59,14 +59,14 @@ const DataBidan = (props) => {
             <table className="table table-zebra border">
               <tbody>
                 <tr>
-                  <td>No</td>
-                  <td>NIP</td>
-                  <td>Nama Bidan</td>
-                  <td>Username</td>
-                  <td>Email</td>
-                  <td>Alamat</td>
-                  <td>No. Telepon</td>
-                  <td>Aksi</td>
+                  <td className="font font-bold">No</td>
+                  <td className="font font-bold">NIP</td>
+                  <td className="font font-bold">Nama Bidan</td>
+                  <td className="font font-bold">Username</td>
+                  <td className="font font-bold">Email</td>
+                  <td className="font font-bold">Alamat</td>
+                  <td className="font font-bold">No. Telepon</td>
+                  <td className="font font-bold">Aksi</td>
                   {/* <td>Password</td> */}
                 </tr>
                 {listBidan.map((bidan, index) => (

@@ -10,7 +10,9 @@ const DataPasien = (props) => {
   const [listPasien, setLIstPasien] = useState([""]);
   const deleteDataPasien = async (ID_PASIEN) => {
     try {
-      const response = await axios.delete(`https://f081-140-213-11-117.ngrok-free.app/api/deletepasien/${ID_PASIEN}`);
+      const response = await axios.delete(
+        `https://f081-140-213-11-117.ngrok-free.app/api/deletepasien/${ID_PASIEN}`
+      );
       console.log(response);
       alert("Data Pasien Berhasil Dihapus :)");
       getListPasien();
@@ -21,7 +23,9 @@ const DataPasien = (props) => {
 
   const getListPasien = async () => {
     try {
-      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getpasien/anak`);
+      const response = await axios.get(
+        `https://f081-140-213-11-117.ngrok-free.app/api/getpasien/anak`
+      );
       setLIstPasien(response.data.data);
     } catch (error) {
       console.log("Error:", error);
@@ -46,27 +50,26 @@ const DataPasien = (props) => {
                 <Link to="/create-data-anak">
                   <button className="btn btn-primary">Create Data Anak</button>
                 </Link>
-              </div>
-            )}
-            <div className="card-body p-5">
-              <div className="flex gap-x-3">
                 <Link to="/data-pasien">
-                  <button className="btn btn-primary">Data Pasien Ibu</button>
+                  <button className="btn btn-info">Data Pasien Ibu</button>
                 </Link>
                 <Link to="/data-pasien-anak">
-                  <button className="btn btn-primary">Data Pasien Anak</button>
+                  <button className="btn btn-info">Data Pasien Anak</button>
                 </Link>
               </div>
-            </div>
+            )}
+            {/* <div className="card-body p-5">
+              <div className="flex gap-x-3"></div>
+            </div> */}
             <table className="table">
               <tbody>
                 <tr>
-                  <td>No</td>
-                  <td>Nama Lengkap</td>
-                  <td>No RME</td>
-                  <td>No Telepon</td>
-                  <td>Alamat</td>
-                  <td>Aksi</td>
+                  <td className="font font-bold">No</td>
+                  <td className="font font-bold">Nama Lengkap</td>
+                  <td className="font font-bold">No RME</td>
+                  <td className="font font-bold">No Telepon</td>
+                  <td className="font font-bold">Alamat</td>
+                  <td className="font font-bold">Aksi</td>
                 </tr>
                 {listPasien.map((pasien, index) => (
                   <tr key={index}>

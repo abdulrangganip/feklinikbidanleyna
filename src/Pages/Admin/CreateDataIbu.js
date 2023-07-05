@@ -145,17 +145,18 @@ const CreateDataIbu = () => {
                   onChange={(e) => handleValue(setAlamat, e)}
                 />
               </div>
+            </div>
 
+            <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
-                <label>NO.TELPON</label>
+                <label>GOLONGAN DARAH</label>
                 <input
-                  placeholder="No Telp Pasien "
+                  placeholder="Golongan Darah Pasien "
                   type="text"
                   className="input input-info"
-                  onChange={(e) => handleValue(setNoTelp, e)}
+                  onChange={(e) => handleValue(setGolDarah, e)}
                 />
               </div>
-
               <div className="grid grid-cols-2">
                 <label>AGAMA</label>
                 {/* <input className="input input-info" /> */}
@@ -173,18 +174,6 @@ const CreateDataIbu = () => {
                   <option value={4}>Hindu</option>
                   <option value={5}>Budha</option>
                 </select>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-y-5">
-              <div className="grid grid-cols-2">
-                <label>GOLONGAN DARAH</label>
-                <input
-                  placeholder="Golongan Darah Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setGolDarah, e)}
-                />
               </div>
 
               <div className="grid grid-cols-2">
@@ -246,6 +235,15 @@ const CreateDataIbu = () => {
                   <option value={7}>S2</option>
                   <option value={8}>S3</option>
                 </select>
+              </div>
+              <div className="grid grid-cols-2">
+                <label>NO.TELPON</label>
+                <input
+                  placeholder="No Telp Pasien "
+                  type="text"
+                  className="input input-info"
+                  onChange={(e) => handleValue(setNoTelp, e)}
+                />
               </div>
             </div>
           </div>
@@ -369,6 +367,7 @@ const CreateDataIbu = () => {
                 />
               </div>
             </div>
+
             <div>
               {/* <Link to="/data-pasien"> */}
               <button
