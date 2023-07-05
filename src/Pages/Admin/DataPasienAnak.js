@@ -67,7 +67,7 @@ const DataPasien = (props) => {
                   <td className="font font-bold">No</td>
                   <td className="font font-bold">Nama Lengkap</td>
                   <td className="font font-bold">No RME</td>
-                  <td className="font font-bold">No Telepon</td>
+                  <td className="font font-bold">Nama Ibu</td>
                   <td className="font font-bold">Alamat</td>
                   <td className="font font-bold">Aksi</td>
                 </tr>
@@ -76,7 +76,7 @@ const DataPasien = (props) => {
                     <td>{index + 1}</td>
                     <td>{pasien.NAMA_LENGKAP}</td>
                     <td>{pasien.NO_RM}</td>
-                    <td>{pasien.NO_TELP}</td>
+                    <td>{pasien.NAMA_IBU}</td>
                     <td>{pasien.ALAMAT}</td>
                     <td>
                       <div>
