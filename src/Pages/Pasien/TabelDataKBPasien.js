@@ -1,51 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../Component/Navbar";
-import SidebarPasien from "../../Component/Pasien/SidebarPasien";
+import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
+import { useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
-function TabelDataKBPasien() {
-  const [tableHeader, setTableHeader] = useState();
-  const [initiateTable, setInitiateTable] = useState(1);
-  let headerDataKBPasien;
-  let contentDataKBPasien;
+function TabelDataKB() {
+  const navigate = useNavigate();
+  const idUser = useSelector((state) => state.data?.user);
+  const dataUser = JSON.parse(sessionStorage.getItem("user"));
+  // const location = useLocation();
+  const [listDataKb, setLIstDataKb] = useState([]);
 
-  const handlerInitiate1 = () => {
-    setInitiateTable(1);
+  const [listMetodeKb, setListMetodeKb] = useState(null);
+  const getListMetodeKb = async () => {
+    try {
+      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getmetodekb`);
+      const data = response.data?.data;
+      console.log("metode", data);
+      setListMetodeKb(data);
+      console.log(data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
-  if (initiateTable === 1) {
-    headerDataKBPasien = [
-      "METODE KB",
-      "DIAGNOSA",
-      "TINDAKAN",
-      "KELUHAN",
-      "TANGGAL DATANG",
-      "TANGGAL KEMBALI",
-      "CATATAN",
-      "TEKANAN DARAH",
-      "KELUHAN PASIEN",
-      "TANGGAL DILAYANI",
-      "BERAT BADAN",
-      "TINGGI BADAN",
-    ];
-    contentDataKBPasien = [
-      "KB suntik 3 bulan",
-      "Mual Mual",
-      "-",
-      "-",
-      "6 Oktober 2022",
-      "10 November 2022",
-      "-",
-      "100/70",
-      "-",
-      "-6 Oktober 2022",
-      "50",
-      "160 cm",
-    ];
-  }
+  const [dataKB, setDataKb] = useState();
+  const getDataKb = async (id_pasien, tipe_pasien) => {
+    try {
+      const response = await axios.get(`https://f081-140-213-11-117.ngrok-free.app/api/getkesehatanKb/${id_pasien}`);
+      const data = response.data?.data;
+      setDataKb(data);
+      setLIstDataKb(data.pelayanan_kb);
+      console.log("res", data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
+  useEffect(() => {
+    // console.log(id_pasien);
+    getListMetodeKb();
+    //getDataKb(location?.state?.ID_PASIEN);
+    // console.log(location.state.id_pelayanan_kb);
+    getDataKb(dataUser.id_pasien, dataUser.tipe_pasien);
+  }, []);
+
   return (
     <div className="card bg-slate-500">
       <Navbar />
-      <SidebarPasien>
+      <SidebarAdminn>
         <div className="card w-auto mx-auto bg-white">
           <div className="mt-10 p-4">
             <p className="text-lg font-bold">Data Keluarga Berencana</p>
@@ -55,26 +59,72 @@ function TabelDataKBPasien() {
                 {/* head */}
                 <thead>
                   <tr>
-                    {headerDataKBPasien.map((item) => (
-                      <th>{item}</th>
-                    ))}
+                    <td>NO.</td>
+                    <td>Tanggal Datang</td>
+                    <td>Tanggal Dilayani</td>
+                    <td>Berat Badan</td>
+                    <td>Tinggi Badan</td>
+                    <td>Tekanan Darah</td>
+                    <td>Keluhan Pasien</td>
+                    <td>Diagnosa</td>
+                    <td>Tindakan</td>
+                    <td>Metode KB</td>
+                    <td>Catatan</td>
+                    <td>Tanggal Kembali</td>
+                    {/* <td>Aksi</td> */}
                   </tr>
                 </thead>
                 <tbody>
-                  {/* row 1 */}
-                  <tr>
-                    {contentDataKBPasien.map((item) => (
-                      <td>{item}</td>
-                    ))}
-                  </tr>
+                  {listDataKb.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{item.TANGGAL_DATANG}</td>
+                      <td>{item.TANGGAL_DILAYANI}</td>
+                      <td>{item.BERAT_BADAN}</td>
+                      <td>{item.TINGGI_BADAN}</td>
+                      <td>{item.TEKANAN_DARAH}</td>
+                      <td>{item.KELUHAN_PASIEN}</td>
+                      <td>{item.DIAGNOSA}</td>
+                      <td>{item.TINDAKAN}</td>
+                      <td>{listMetodeKb[item.ID_METODE_KB - 1].NAMA}</td>
+                      {/* (listDataAgama ? listDataAgama[detailPasien.keluarga.AGAMA_SUAMI - 1].NAMA : "-") */}
+                      <td>{item.CATATAN}</td>
+                      <td>{item.TANGGAL_KEMBALI}</td>
+                      <td>
+                        {/* <div>
+                          {/* <Link className="mr-3" to="/detail-data-pasien"> */}
+                        {/* <button
+                            className="btn btn-warning"
+                            onClick={() => {
+                              const pasienId = pasien.ID_PASIEN;
+                              navigate("/detail-data-pasien", {
+                                state: { id_pasien: pasienId },
+                              });
+                            }}
+                          >
+                            Detail
+                          </button> */}
+                        {/* </Link>
+                          <button
+                            className="btn btn-error"
+                            onClick={() => {
+                              deleteDataPasien(pasien.ID_PASIEN);
+                            }}
+                          >
+                            Hapus
+                          </button> */}
+                        {/* </div> */}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-      </SidebarPasien>
+      </SidebarAdminn>
     </div>
   );
 }
 
-export default TabelDataKBPasien;
+export default TabelDataKB;

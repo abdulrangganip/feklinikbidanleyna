@@ -4,7 +4,7 @@ import SidebarAdminn from "../../Component/Admin/SidebarAdminn";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
-function TabelDataKB() {
+function TabelDataKB(props) {
   const navigate = useNavigate();
   const location = useLocation();
   const [listDataKb, setLIstDataKb] = useState([]);
@@ -35,28 +35,43 @@ function TabelDataKB() {
     }
   };
 
-  useEffect(() => {
-    console.log(location);
-    getListMetodeKb();
-    //getDataKb(location?.state?.ID_PASIEN);
-    // console.log(location.state.id_pelayanan_kb);
-    getDataKb(location?.state?.id_pasien);
-  }, [location]);
+  useEffect(
+    () => {
+      console.log(location);
+      getListMetodeKb();
+      //getDataKb(location?.state?.ID_PASIEN);
+      // console.log(location.state.id_pelayanan_kb);
+      getDataKb(location?.state?.id_pasien);
+    },
+    [location],
+    [props]
+  );
 
   return (
     <div className="card bg-slate-500">
       <Navbar />
       <SidebarAdminn>
-        <button
-          onClick={() => {
-            navigate("/input-kb", {
-              state: { id_pasien: location.state.id_pasien },
-            });
-          }}
-          className="btn btn-success"
-        >
-          TAMBAH
-        </button>
+        {props.role === "bidan" && (
+          <div className="flex gap-x-3">
+            {/* <Link to="/create-data-ibu">
+              <button className="btn btn-primary">Create Data Ibu</button>
+            </Link>
+            <Link to="/create-data-anak">
+              <button className="btn btn-primary">Create Data Anak</button>
+            </Link> */}
+            <button
+              onClick={() => {
+                navigate("/input-kb", {
+                  state: { id_pasien: location.state.id_pasien },
+                });
+              }}
+              className="btn btn-success"
+            >
+              TAMBAH
+            </button>
+          </div>
+        )}
+
         <div className="card w-auto mx-auto bg-white">
           <div className="mt-10 p-4">
             <p className="text-lg font-bold">Data Keluarga Berencana</p>

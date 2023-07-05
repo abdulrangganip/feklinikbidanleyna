@@ -21,6 +21,8 @@ const CreateDataIbu = () => {
   const [noNik, setNoNik] = useState("");
   const [noKK, setNoKK] = useState("");
   const [noTelp, setNoTelp] = useState("");
+  const [riwayatPenyakit, setRiwayatPenyakit] = useState("");
+  const [riwayatAlergi, setRiwayatAlergi] = useState("");
   const [pekerjaan, setPekerjaan] = useState("");
   //const [jenisKelamin, setJenisKelamin] = useState("");
   //FORM STATE KELUARGA
@@ -40,10 +42,7 @@ const CreateDataIbu = () => {
 
   const postDataIbu = async (data) => {
     try {
-      const response = await axios.post(
-        `https://f081-140-213-11-117.ngrok-free.app/api/addpasien`,
-        data
-      );
+      const response = await axios.post(`https://f081-140-213-11-117.ngrok-free.app/api/addpasien`, data);
       console.log(response);
       alert("Buat Data Pasien Berhasil!");
       navigate("/data-pasien");
@@ -66,6 +65,8 @@ const CreateDataIbu = () => {
     body.no_telp = noTelp;
     body.pekerjaan = pekerjaan;
     body.jenis_kelamin = "wanita";
+    body.riwayat_penyakit = riwayatPenyakit;
+    body.riwayat_alergi = riwayatAlergi;
     body.id_agama = agama;
     body.id_pendidikan_terakhir = parseInt(pendidikanTerakhir);
     body.keluarga = {
@@ -94,70 +95,38 @@ const CreateDataIbu = () => {
       <Navbar />
       <SidebarAdminn>
         <div className="card bg-white my-5">
-          <p className="font-bold text-xl text-center py-4">
-            Buat Data Diri Pasien Ibu
-          </p>
+          <p className="font-bold text-xl text-center py-4">Buat Data Diri Pasien Ibu</p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>NO RM</label>
-                <input
-                  placeholder="Contoh: 01/VII/IBU/2023 "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNoRekamMedis, e)}
-                />
+                <input placeholder="Contoh: 01/VII/IBU/2023 " type="text" className="input input-info" onChange={(e) => handleValue(setNoRekamMedis, e)} />
               </div>
               <div className="grid grid-cols-2">
                 <label>NAMA LENGKAP</label>
-                <input
-                  placeholder="Nama Lengkap Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNamaLengkap, e)}
-                />
+                <input placeholder="Nama Lengkap Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setNamaLengkap, e)} />
               </div>
               <div className="grid grid-cols-2">
                 <label>TEMPAT LAHIR</label>
-                <input
-                  placeholder="Tempat Lahir Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setTempatLahir, e)}
-                />
+                <input placeholder="Tempat Lahir Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setTempatLahir, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>TANGGAL LAHIR</label>
-                <input
-                  placeholder="Contoh: YYYY/MM/DD "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setTanggalLahir, e)}
-                />
+                <input placeholder="Contoh: YYYY/MM/DD " type="text" className="input input-info" onChange={(e) => handleValue(setTanggalLahir, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>ALAMAT</label>
-                <input
-                  placeholder="Alamat Lengkap Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setAlamat, e)}
-                />
+                <input placeholder="Alamat Lengkap Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setAlamat, e)} />
               </div>
             </div>
 
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
-                <label>GOLONGAN DARAH</label>
-                <input
-                  placeholder="Golongan Darah Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setGolDarah, e)}
-                />
+                <label>NO.TELPON</label>
+                <input placeholder="No Telp Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setNoTelp, e)} />
               </div>
               <div className="grid grid-cols-2">
                 <label>AGAMA</label>
@@ -177,35 +146,37 @@ const CreateDataIbu = () => {
                   <option value={5}>Budha</option>
                 </select>
               </div>
+            </div>
+
+            <div className="flex flex-col gap-y-5">
+              <div className="grid grid-cols-2">
+                <label>GOLONGAN DARAH</label>
+                <input placeholder="Golongan Darah Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setGolDarah, e)} />
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT PENYAKIT</label>
+                <input placeholder="Riwayat Penyakit" type="text" className="input input-info" onChange={(e) => handleValue(setRiwayatPenyakit, e)} />
+              </div>
+
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT Alergi</label>
+                <input placeholder="Riwayat Alergi" type="text" className="input input-info" onChange={(e) => handleValue(setRiwayatAlergi, e)} />
+              </div>
 
               <div className="grid grid-cols-2">
                 <label>NO NIK</label>
-                <input
-                  placeholder="Angka harus diisi 16 digit "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNoNik, e)}
-                />
+                <input placeholder="Angka harus diisi 16 digit " type="text" className="input input-info" onChange={(e) => handleValue(setNoNik, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>NO KK</label>
-                <input
-                  placeholder="Angka harus diisi 16 digit "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNoKK, e)}
-                />
+                <input placeholder="Angka harus diisi 16 digit " type="text" className="input input-info" onChange={(e) => handleValue(setNoKK, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>PEKERJAAN</label>
-                <input
-                  placeholder="Pekerjaan Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setPekerjaan, e)}
-                />
+                <input placeholder="Pekerjaan Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setPekerjaan, e)} />
               </div>
 
               <div className="grid grid-cols-2">
@@ -230,51 +201,29 @@ const CreateDataIbu = () => {
               </div>
               <div className="grid grid-cols-2">
                 <label>NO.TELPON</label>
-                <input
-                  placeholder="No Telp Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNoTelp, e)}
-                />
+                <input placeholder="No Telp Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setNoTelp, e)} />
               </div>
             </div>
           </div>
         </div>
         <div className="card bg-white">
-          <p className="font-bold text-xl text-center py-4">
-            Buat Data Keluarga Pasien Ibu
-          </p>
+          <p className="font-bold text-xl text-center py-4">Buat Data Keluarga Pasien Ibu</p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>NAMA SUAMI</label>
-                <input
-                  placeholder="Masukan Nama "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setNamaSuami, e)}
-                />
+                <input placeholder="Masukan Nama " type="text" className="input input-info" onChange={(e) => handleValue(setNamaSuami, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>TEMPAT LAHIR SUAMI</label>
-                <input
-                  placeholder="Masukan Tempat Lahir "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setTempatLahirSuami, e)}
-                />
+                <input placeholder="Masukan Tempat Lahir " type="text" className="input input-info" onChange={(e) => handleValue(setTempatLahirSuami, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>TANGGAL LAHIR SUAMI</label>
-                <input
-                  placeholder="Contoh: YYYY/MM/DD "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setTanggalLahirSuami, e)}
-                />
+                <input placeholder="Contoh: YYYY/MM/DD " type="text" className="input input-info" onChange={(e) => handleValue(setTanggalLahirSuami, e)} />
               </div>
 
               <div className="grid grid-cols-2">
@@ -321,45 +270,24 @@ const CreateDataIbu = () => {
 
               <div className="grid grid-cols-2">
                 <label>PEKERJAAN SUAMI</label>
-                <input
-                  placeholder="Pekerjaan Suami Pasien "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setPekerjaanSuami, e)}
-                />
+                <input placeholder="Pekerjaan Suami Pasien " type="text" className="input input-info" onChange={(e) => handleValue(setPekerjaanSuami, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>GOL DARAH SUAMI</label>
-                <input
-                  placeholder="Golongan Darah Suami "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setGolDarahSuami, e)}
-                />
+                <input placeholder="Golongan Darah Suami " type="text" className="input input-info" onChange={(e) => handleValue(setGolDarahSuami, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>JUMLAH ANAK</label>
-                <input
-                  placeholder=" Jumlah Anak"
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setJumlahAnak, e)}
-                />
+                <input placeholder=" Jumlah Anak" type="text" className="input input-info" onChange={(e) => handleValue(setJumlahAnak, e)} />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>UMUR ANAK TERAKHIR</label>
-                <input
-                  placeholder="Umur Anak Terakhir (tahun) "
-                  type="text"
-                  className="input input-info"
-                  onChange={(e) => handleValue(setUmurAnakTerakhir, e)}
-                />
+                <input placeholder="Umur Anak Terakhir (tahun) " type="text" className="input input-info" onChange={(e) => handleValue(setUmurAnakTerakhir, e)} />
               </div>
             </div>
-
             <div>
               {/* <Link to="/data-pasien"> */}
               <button
@@ -379,4 +307,5 @@ const CreateDataIbu = () => {
     </div>
   );
 };
+
 export default CreateDataIbu;

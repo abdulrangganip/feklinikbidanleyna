@@ -13,6 +13,8 @@ const CreateDataAnak = () => {
   const [tanggalLahir, setTanggalLahir] = useState("");
   const [alamat, setAlamat] = useState("");
   const [golonganDarah, setGolonganDarah] = useState("");
+  const [riwayatPenyakit, setRiwayatPenyakit] = useState("");
+  const [riwayatAlergi, setRiwayatAlergi] = useState("");
   const [agama, setAgama] = useState(1);
   const [noNIK, setNoNIK] = useState("");
   const [noKK, setNoKK] = useState("");
@@ -26,16 +28,13 @@ const CreateDataAnak = () => {
 
   const postDataAnak = async (data) => {
     try {
-      const response = await axios.post(
-        `https://f081-140-213-11-117.ngrok-free.app/api/addpasienAnak`,
-        data
-      );
+      const response = await axios.post(`https://f081-140-213-11-117.ngrok-free.app/api/addpasien`, data);
       console.log(response);
       alert("Buat Data Pasien Anak Berhasil!");
       navigate("/data-pasien-anak");
     } catch (error) {
+      console.log("error:", error);
       alert(`Buat Data Pasien Anak Gagal!`);
-      console.log(error);
     }
   };
 
@@ -47,6 +46,8 @@ const CreateDataAnak = () => {
     body.tanggal_lahir = tanggalLahir;
     body.alamat = alamat;
     body.gol_darah = golonganDarah;
+    body.riwayat_penyakit = riwayatPenyakit;
+    body.riwayat_alergi = riwayatAlergi;
     body.id_agama = agama;
     body.id_jenis_pelayanan = 2;
     body.no_nik = noNIK;
@@ -63,68 +64,37 @@ const CreateDataAnak = () => {
       <Navbar />
       <SidebarAdminn>
         <div className="card bg-white my-5">
-          <p className="font-bold text-xl text-center py-4">
-            Buat Data Diri Pasien Anak
-          </p>
+          <p className="font-bold text-xl text-center py-4">Buat Data Diri Pasien Anak</p>
           <hr />
           <div className="card-body grid grid-cols-2 gap-x-5">
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>NO RM</label>
-                <input
-                  placeholder="Contoh: 01/VII/ANAK/2023"
-                  onChange={(e) => handleValue(setNoRekamMedis, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Contoh: 01/VII/ANAK/2023" onChange={(e) => handleValue(setNoRekamMedis, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>NAMA LENGKAP</label>
-                <input
-                  placeholder="Nama Lengkap Pasien "
-                  type="text"
-                  onChange={(e) => handleValue(setNamaLengkap, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Nama Lengkap Pasien " type="text" onChange={(e) => handleValue(setNamaLengkap, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>TEMPAT LAHIR</label>
-                <input
-                  placeholder="Tempat Lahir Pasien "
-                  type="text"
-                  onChange={(e) => handleValue(setTempatLahir, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Tempat Lahir Pasien " type="text" onChange={(e) => handleValue(setTempatLahir, e)} className="input input-info" />
               </div>
 
               <div className="grid grid-cols-2">
                 <label>TANGGAL LAHIR</label>
-                <input
-                  placeholder="Contoh: YYYY/MM/DD "
-                  type="text"
-                  onChange={(e) => handleValue(setTanggalLahir, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Contoh: YYYY/MM/DD " type="text" onChange={(e) => handleValue(setTanggalLahir, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>ALAMAT</label>
-                <input
-                  placeholder="Alamat Lengkap Pasien "
-                  type="text"
-                  onChange={(e) => handleValue(setAlamat, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Alamat Lengkap Pasien " type="text" onChange={(e) => handleValue(setAlamat, e)} className="input input-info" />
               </div>
             </div>
 
             <div className="flex flex-col gap-y-5">
               <div className="grid grid-cols-2">
                 <label>GOLONGAN DARAH</label>
-                <input
-                  placeholder="Golongan Darah Pasien "
-                  type="text"
-                  onChange={(e) => handleValue(setGolonganDarah, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Golongan Darah Pasien " type="text" onChange={(e) => handleValue(setGolonganDarah, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>AGAMA</label>
@@ -145,49 +115,36 @@ const CreateDataAnak = () => {
                 </select>
               </div>
               <div className="grid grid-cols-2">
+                <label>GOLONGAN DARAH</label>
+                <input placeholder="Golongan Darah Pasien " type="text" onChange={(e) => handleValue(setGolonganDarah, e)} className="input input-info" />
+              </div>
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT PENYAKIT</label>
+                <input placeholder="Riwayat Penyakit" type="text" className="input input-info" onChange={(e) => handleValue(setRiwayatPenyakit, e)} />
+              </div>
+              <div className="grid grid-cols-2">
+                <label>RIWAYAT Alergi</label>
+                <input placeholder="Riwayat Alergi" type="text" className="input input-info" onChange={(e) => handleValue(setRiwayatAlergi, e)} />
+              </div>
+              <div className="grid grid-cols-2">
                 <label>NO NIK</label>
-                <input
-                  placeholder="Angka harus diisi 16 digit "
-                  type="text"
-                  onChange={(e) => handleValue(setNoNIK, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Angka harus diisi 16 digit " type="text" onChange={(e) => handleValue(setNoNIK, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>NO KK</label>
-                <input
-                  placeholder="Angka harus diisi 16 digit "
-                  type="text"
-                  onChange={(e) => handleValue(setNoKK, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Angka harus diisi 16 digit " type="text" onChange={(e) => handleValue(setNoKK, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>JENIS KELAMIN</label>
-                <input
-                  placeholder="Laki-Laki/Perempuan "
-                  type="text"
-                  onChange={(e) => handleValue(setJenisKelamin, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Laki-Laki/Perempuan " type="text" onChange={(e) => handleValue(setJenisKelamin, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>NAMA AYAH</label>
-                <input
-                  placeholder="Masukan Nama Ayah "
-                  type="text"
-                  onChange={(e) => handleValue(setNamaAyah, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Masukan Nama Ayah " type="text" onChange={(e) => handleValue(setNamaAyah, e)} className="input input-info" />
               </div>
               <div className="grid grid-cols-2">
                 <label>NAMA IBU</label>
-                <input
-                  placeholder="Masukan Nama Ibu "
-                  type="text"
-                  onChange={(e) => handleValue(setNamaIbu, e)}
-                  className="input input-info"
-                />
+                <input placeholder="Masukan Nama Ibu " type="text" onChange={(e) => handleValue(setNamaIbu, e)} className="input input-info" />
               </div>
             </div>
             <div>
