@@ -108,6 +108,11 @@ const CreateDataAnak = () => {
               <div className="grid grid-cols-2">
                 <label>ALAMAT</label>
                 <input
+                  style={{
+                    width: "285px",
+                    height: "185px",
+                    paddingBottom: "150px",
+                  }}
                   placeholder="Alamat Lengkap Pasien "
                   type="text"
                   onChange={(e) => handleValue(setAlamat, e)}
